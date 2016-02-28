@@ -21,7 +21,7 @@
 		"guzzlehttp/guzzle": "^6.1"
 	},
 	"require-dev": {
-		"nette/tester": "~1.3"
+		"nette/tester": "^1.7"
 	},
 	"support": {
 		"email": "ondracek.roman@centrum.cz",
