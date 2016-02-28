@@ -1,6 +1,5 @@
 language: php
 php:
-    - 5.4
     - 5.5
     - 5.6
     - 7.0
@@ -22,7 +21,7 @@ before_script:
     - travis_retry composer update --no-interaction --prefer-dist $dependencies
     # Install Nette Code checker
     - travis_retry composer create-project nette/code-checker temp/code-checker ~2.5 --no-interaction
-script: 
+script:
     - vendor/bin/tester -p $PHP_BIN tests -s
     - php temp/code-checker/src/code-checker.php -l --short-arrays
 after_failure:
