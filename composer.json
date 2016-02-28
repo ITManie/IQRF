@@ -1,0 +1,41 @@
+{
+    "name": "ITManie/IQRF",
+    "description": "IQRF library for Nette Framework.",
+    "keywords": ["iqrf", "api", "nette"],
+    "type": "library",
+    "homepage": "https://github.com/ITManie/IQRF",
+    "license": ["GPL-3.0"],
+    "authors": [
+        {
+            "name": "Roman Ondráček",
+            "homepage": "https://github.com/Roman3349",
+            "email": "ondracek.roman@centrum.cz",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": ">= 5.4",
+        "nette/application": "~2.3.0",
+        "nette/http": "~2.3.0",
+        "nette/utils": "~2.3.0",
+        "guzzlehttp/guzzle": "^6.1"
+    },
+    "require-dev": {
+        "nette/tester": "~1.3"
+    },
+    "support": {
+        "email": "ondracek.roman@centrum.cz",
+        "issues": "https://github.com/ITManie/IQRF/issues"
+    },
+    "autoload": {
+        "psr-4": {
+            "ITManie\\IQRF\\": "src/"
+        }
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "archive": {
+        "exclude": ["vendor", "tests", ".travis.yml"]
+    }
+}
