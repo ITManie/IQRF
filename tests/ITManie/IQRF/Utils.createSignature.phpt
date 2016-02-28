@@ -1,11 +1,9 @@
 <?php
 
-use ITManie\IQRF\Utils,
-	Tester\Assert;
+use Tester\Assert;
 
 require __DIR__ . '/../../bootstrap.php';
-
-Tester\Environment::setup();
+require __DIR__ . '/../../../src/ITManie/IQRF/Utils.php';
 
 function test($parameterPart, $apiKey) {
 	return md5($parameterPart . '|' . $apiKey . '|' . $_SERVER['SERVER_ADDR'] . '|' . time() / 600);
