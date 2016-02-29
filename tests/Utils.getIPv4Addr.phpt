@@ -7,4 +7,4 @@ require __DIR__ . '/bootstrap.php';
 
 $utils = new Utils();
 
-Assert::same(file_get_contents('http://ipecho.net/plain'), $utils->getIPv4Addr());
+Assert::same(file_get_contents('http://whatismyip.akamai.com/'), $utils->getIPv4Addr());

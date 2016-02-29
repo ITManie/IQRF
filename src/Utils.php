@@ -11,7 +11,7 @@ class Utils {
 	 * @return string IPv4 address
 	 */
 	public function getIPv4Addr() {
-		$client = new Client(['base_uri' => 'http://ipecho.net/plain']);
+		$client = new Client(['base_uri' => 'http://whatismyip.akamai.com/']);
 		return $client->request('GET')->getBody()->getContents();
 	}
 	/**
