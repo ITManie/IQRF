@@ -23,7 +23,7 @@ class DataGW {
 		$response = $client->request('GET', $parameter);
 		return $response;
 	}
-	
+
 	/**
 	 * Get new data from the Cloud (incoming from the GW)
 	 * @param int $gatewayID ID of gateway

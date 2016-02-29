@@ -23,7 +23,7 @@ class DataAPI {
 		$response = $client->request('GET', $parameter);
 		return $response;
 	}
-	
+
 	/**
 	 * Get new data from the Cloud (incoming from the API)
 	 * @param int $gatewayID ID of gateway
