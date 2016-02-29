@@ -103,5 +103,5 @@ class Status {
 				return 'Invalid status code.';
 		}
 	}
-	
+
 }
