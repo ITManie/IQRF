@@ -1,5 +1,5 @@
 {
-	"name": "ITManie/IQRF",
+	"name": "it-manie/iqrf",
 	"description": "IQRF library for Nette Framework.",
 	"keywords": ["iqrf", "api", "nette"],
 	"type": "library",
