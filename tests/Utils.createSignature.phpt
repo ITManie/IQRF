@@ -3,8 +3,7 @@
 use ITManie\IQRF\Utils,
 	Tester\Assert;
 
-require __DIR__ . '/../../bootstrap.php';
-require __DIR__ . '/../../../src/ITManie/IQRF/Utils.php';
+require __DIR__ . '/bootstrap.php';
 
 $parameter = 'ver=2&uid=test&gid=0d000001&cmd=uplc&data=616263';
 $apiKey = '12345678901234567890123456789012';
