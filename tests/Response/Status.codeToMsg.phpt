@@ -7,23 +7,28 @@ require __DIR__ . '/../bootstrap.php';
 
 $status = new Status();
 
-Assert::same('OK', $status->codeToMsg('OK'));
-Assert::same('Data string exceeds 64B.', $status->codeToMsg('ERROR 1'));
-Assert::same('Unfilled required fields. Required parameter(s) missing.', $status->codeToMsg('ERROR 2'));
-Assert::same('No data sent. Writing error, data has not been written.', $status->codeToMsg('ERROR 3'));
-Assert::same('Data access denied. The user has no access to given GW.', $status->codeToMsg('ERROR 4'));
-Assert::same('Incorrect username or password.', $status->codeToMsg('ERROR 5'));
-Assert::same('No data for specified request.', $status->codeToMsg('ERROR 6'));
-Assert::same('Error issued by MySQL server when attempting to write to the database.', $status->codeToMsg('ERROR 7'));
-Assert::same('Incorrectly completed parameter new.', $status->codeToMsg('ERROR 8'));
-Assert::same('Incorrect data format. Every byte of binary data must be converted to 2 bytes corresponding to its hexadecimal value in ASCII representation.', $status->codeToMsg('ERROR 9'));
-Assert::same('Device is already assigned.', $status->codeToMsg('ERROR 10'));
-Assert::same('Incorrect password to GW.', $status->codeToMsg('ERROR 11'));
-Assert::same('Incorrect user.', $status->codeToMsg('ERROR 12'));
-Assert::same('The device can not be changed. Device is not assigned to a given user account.', $status->codeToMsg('ERROR 13'));
-Assert::same('The device can not be changed. Incorrect password.', $status->codeToMsg('ERROR 14'));
-Assert::same('The device can not be added.', $status->codeToMsg('ERROR 15'));
-Assert::same('Maximum count of GW is reached according to user\'s license.', $status->codeToMsg('ERROR 16'));
-Assert::same('User does not have API key.', $status->codeToMsg('ERROR 17'));
-Assert::same('Incorrect signature.', $status->codeToMsg('ERROR 18'));
-Assert::same('Invalid status code.', $status->codeToMsg('ERROR'));
+$array = ['OK' => 'OK',
+	'ERROR 1' => 'Data string exceeds 64B.',
+	'ERROR 2' => 'Unfilled required fields. Required parameter(s) missing.',
+	'ERROR 3' => 'No data sent. Writing error, data has not been written.',
+	'ERROR 4' => 'Data access denied. The user has no access to given GW.',
+	'ERROR 5' => 'Incorrect username or password.',
+	'ERROR 6' => 'No data for specified request.',
+	'ERROR 7' => 'Error issued by MySQL server when attempting to write to the database.',
+	'ERROR 8' => 'Incorrectly completed parameter new.',
+	'ERROR 9' => 'Incorrect data format. Every byte of binary data must be converted '
+	. 'to 2 bytes corresponding to its hexadecimal value in ASCII representation.',
+	'ERROR 10' => 'Device is already assigned.',
+	'ERROR 11' => 'Incorrect password to GW.',
+	'ERROR 12' => 'Incorrect user.',
+	'ERROR 13' => 'The device can not be changed. Device is not assigned to a given user account.',
+	'ERROR 14' => 'The device can not be changed. Incorrect password.',
+	'ERROR 15' => 'The device can not be added.',
+	'ERROR 16' => 'Maximum count of GW is reached according to user\'s license.',
+	'ERROR 17' => 'User does not have API key.',
+	'ERROR 18' => 'Incorrect signature.',
+	'ERROR' => 'Invalid status code.'];
+
+foreach ($array as $code => $message) {
+	Assert::same($message, $status->codeToMsg($code));
+}
