@@ -4,14 +4,18 @@ php:
     - 5.6
     - 7.0
     - hhvm
+    - hhvm-nightly
 env:
     - PHP_BIN=php
     - PHP_BIN=php-cgi
 matrix:
     allow_failures:
         - php: hhvm
+        - hhvm-nightly
     exclude:
         - php: hhvm
+          env: PHP_BIN=php-cgi
+        - php: hhvm-nightly
           env: PHP_BIN=php-cgi
 before_script:
     # Update Composer
