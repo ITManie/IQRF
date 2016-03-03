@@ -30,7 +30,7 @@ class Gateway {
 		$utils = new Utils();
 		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=rem';
-		return $utils->createRequest($parameter);;
+		return $utils->createRequest($parameter);
 	}
 
 	/**
