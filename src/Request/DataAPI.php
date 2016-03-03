@@ -4,8 +4,7 @@ namespace ITManie\IQRF\Request;
 
 use ITManie\IQRF\IQRF,
 	ITManie\IQRF\Config,
-	ITManie\IQRF\Utils,
-	GuzzleHttp\Client;
+	ITManie\IQRF\Utils;
 
 class DataAPI {
 
@@ -16,12 +15,11 @@ class DataAPI {
 	 * @return string $response Response of request
 	 */
 	public function getLast($gatewayID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() . '&gid=' . $gatewayID . '&cmd=dnlc&last=1&count=' . $count;
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=dnlc&last=1&count=' . $count;
+		return $utils->createRequest($parameter);
 	}
 
 	/**
@@ -31,14 +29,12 @@ class DataAPI {
 	 * @return string $response Response of request
 	 */
 	public function getNew($gatewayID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() . '&gid=' . $gatewayID . '&cmd=dnlc&new=1&count=' . $count;
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=dnlc&new=1&count=' . $count;
+		return $utils->createRequest($parameter);
 	}
-
 
 	/**
 	 * Send data to IQRF Cloud
@@ -47,11 +43,11 @@ class DataAPI {
 	 * @return string $response Response of request
 	 */
 	public function send($gatewayID, $data) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() . '&gid=' . $gatewayID . '&cmd=uplc&data=' . $data;
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=uplc&data=' . $data;
+		return $utils->createRequest($parameter);
 	}
+
 }

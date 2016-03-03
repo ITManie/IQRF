@@ -4,8 +4,7 @@ namespace ITManie\IQRF\Request;
 
 use ITManie\IQRF\IQRF,
 	ITManie\IQRF\Config,
-	ITManie\IQRF\Utils,
-	GuzzleHttp\Client;
+	ITManie\IQRF\Utils;
 
 class DataGW {
 
@@ -16,12 +15,11 @@ class DataGW {
 	 * @return string $response Response of request
 	 */
 	public function getLast($gatewayID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() . '&gid=' . $gatewayID . '&cmd=dnld&last=1&count=' . $count;
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=dnld&last=1&count=' . $count;
+		return $utils->createRequest($parameter);
 	}
 
 	/**
@@ -31,12 +29,11 @@ class DataGW {
 	 * @return string $response Response of request
 	 */
 	public function getNew($gatewayID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() . '&gid=' . $gatewayID . '&cmd=dnld&new=1&count=' . $count;
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=dnld&new=1&count=' . $count;
+		return $utils->createRequest($parameter);
 	}
 
 }

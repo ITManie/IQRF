@@ -4,8 +4,7 @@ namespace ITManie\IQRF\Request;
 
 use ITManie\IQRF\IQRF,
 	ITManie\IQRF\Config,
-	ITManie\IQRF\Utils,
-	GuzzleHttp\Client;
+	ITManie\IQRF\Utils;
 
 class Gateway {
 
@@ -15,13 +14,11 @@ class Gateway {
 	 * @param string $gatewayPW Gateway password
 	 */
 	public function add($gatewayID, $gatewayPW) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() .
-				'&gid=' . $gatewayID . '&gpw=' . $gatewayPW . '&cmd=add';
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&gpw=' . $gatewayPW . '&cmd=add';
+		return $utils->createRequest($parameter);
 	}
 
 	/**
@@ -29,13 +26,11 @@ class Gateway {
 	 * @param int $gatewayID Gateway ID
 	 */
 	public function remove($gatewayID) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() .
-				'&gid=' . $gatewayID . '&cmd=rem';
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=rem';
+		return $utils->createRequest($parameter);;
 	}
 
 	/**
@@ -44,25 +39,21 @@ class Gateway {
 	 * @param string $gatewayAlias Gateway alias
 	 */
 	public function edit($gatewayID, $gatewayAlias) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() .
-				'&gid=' . $gatewayID . '&cmd=edit&alias=' . $gatewayAlias;
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=edit&alias=' . $gatewayAlias;
+		return $utils->createRequest($parameter);
 	}
 
 	/**
 	 * Get list of gateways
 	 */
 	public function getList() {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() . '&cmd=list';
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID() . '&cmd=list';
+		return $utils->createRequest($parameter);
 	}
 
 	/**
@@ -70,13 +61,11 @@ class Gateway {
 	 * @param int $gatewayID Gateway ID
 	 */
 	public function getInfo($gatewayID) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . Config::getUserID() .
-				'&gid=' . $gatewayID . '&cmd=info';
-		$signature = Utils::createSignature($parameter, Config::getApiKey());
-		$parameter += '&signature=' . $signature;
-		$client = new Client(['base_uri' => IQRF::API_URI]);
-		$response = $client->request('GET', $parameter);
-		return $response;
+		$config = new Config();
+		$utils = new Utils();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $config->getUserID()
+				. '&gid=' . $gatewayID . '&cmd=info';
+		return $utils->createRequest($parameter);
 	}
 
 }

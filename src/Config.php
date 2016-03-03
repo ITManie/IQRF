@@ -29,7 +29,7 @@ class Config extends Object {
 	 * Get API key
 	 * @return string
 	 */
-	public static function getApiKey() {
+	public function getApiKey() {
 		return $this->apiKey;
 	}
 
@@ -37,7 +37,7 @@ class Config extends Object {
 	 * Get User ID
 	 * @return int
 	 */
-	public static function getUserID() {
+	public function getUserID() {
 		return $this->userID;
 	}
 

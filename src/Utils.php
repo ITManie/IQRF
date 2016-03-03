@@ -2,7 +2,8 @@
 
 namespace ITManie\IQRF;
 
-use GuzzleHttp\Client;
+use ITManie\IQRF\Config,
+	GuzzleHttp\Client;
 
 class Utils {
 
@@ -14,6 +15,7 @@ class Utils {
 		$client = new Client(['base_uri' => 'https://api.ipify.org']);
 		return $client->request('GET')->getBody()->getContents();
 	}
+
 	/**
 	 * Create md5 hash for IQRF API signature
 	 * @param string $parameterPart
@@ -25,6 +27,20 @@ class Utils {
 	public function createSignature($parameterPart, $apiKey, $ipAddr, $time) {
 		$md5 = md5($parameterPart . '|' . $apiKey . '|' . $ipAddr . '|' . round($time / 600));
 		return $md5;
+	}
+
+	/**
+	 * Create request
+	 * @param string $parameter
+	 * @return mixed
+	 */
+	public function createRequest($parameter) {
+		$config = new Config();
+		$signature = $this->createSignature($parameter, $config->getApiKey(), $this->getIPv4Addr(), time());
+		$parameter += '&signature=' . $signature;
+		$client = new Client(['base_uri' => IQRF::API_URI]);
+		$response = $client->request('GET', $parameter);
+		return $response;
 	}
 
 }
