@@ -14,8 +14,8 @@ class Config extends Object {
 	private $userID;
 
 	/**
-	 * @param string $apiKey
-	 * @param int $userID
+	 * @param string $apiKey API key
+	 * @param int $userID User ID
 	 */
 	public function __construct($apiKey, $userID) {
 		Validators::assert($apiKey, 'string', 'apiKey');
@@ -27,7 +27,7 @@ class Config extends Object {
 
 	/**
 	 * Get API key
-	 * @return string
+	 * @return string API key
 	 */
 	public function getApiKey() {
 		return $this->apiKey;
@@ -35,7 +35,7 @@ class Config extends Object {
 
 	/**
 	 * Get User ID
-	 * @return int
+	 * @return int User ID
 	 */
 	public function getUserID() {
 		return $this->userID;

@@ -13,8 +13,8 @@ class IQRFExtension extends CompilerExtension {
 	private $defaults = ['apiKey' => null, 'userID' => null];
 
 	/**
-	 * @param string $apiKey
-	 * @param int $userID
+	 * @param string $apiKey API key
+	 * @param int $userID USer ID
 	 */
 	public function __construct($apiKey = null, $userID = null) {
 		$this->defaults['apiKey'] = $apiKey;

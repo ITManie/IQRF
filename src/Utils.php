@@ -18,9 +18,9 @@ class Utils {
 
 	/**
 	 * Create md5 hash for IQRF API signature
-	 * @param string $parameterPart
-	 * @param string $apiKey
-	 * @param string $ipAddr IPv4 address of server
+	 * @param string $parameterPart Parameter of request
+	 * @param string $apiKey API key
+	 * @param string $ipAddr IPv4 address of the server
 	 * @param int $time Epoch time
 	 * @return string md5 hash
 	 */
@@ -31,8 +31,8 @@ class Utils {
 
 	/**
 	 * Create request
-	 * @param string $parameter
-	 * @return mixed
+	 * @param string $parameter Parameter of request
+	 * @return mixed Response
 	 */
 	public function createRequest($parameter) {
 		$config = new Config();
