@@ -4,7 +4,6 @@ php:
     - 5.6
     - 7.0
     - hhvm
-    - hhvm-nightly
     - nightly
 env:
     - PHP_BIN=php
@@ -12,7 +11,6 @@ env:
 matrix:
     allow_failures:
         - php: hhvm
-        - php: hhvm-nightly
         - php: nightly
     exclude:
         - php: hhvm
@@ -31,8 +29,7 @@ script:
 after_failure:
     # Print *.actual content
     - 'for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
-sudo: required
-dist: trusty
+sudo: false
 cache:
     directories:
         - $HOME/.composer/cache
