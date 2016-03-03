@@ -26,7 +26,7 @@ $array = ['OK' => 'OK',
 	'ERROR 16' => 'Maximum count of GW is reached according to user\'s license.',
 	'ERROR 17' => 'User does not have API key.',
 	'ERROR 18' => 'Incorrect signature.',
-	'Invalid status code.' => 'ERROR'];
+	'Invalid status message.' => 'ERROR'];
 
 foreach ($array as $code => $message) {
 	Assert::same($code, $status->msgToCode($message));

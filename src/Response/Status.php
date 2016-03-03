@@ -46,7 +46,7 @@ class Status {
 		if (array_search($message, $this->array, true)) {
 			return array_keys($this->array, $message, true)[0];
 		} else {
-			return 'Invalid status code.';
+			return 'Invalid status message.';
 		}
 	}
 
