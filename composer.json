@@ -1,9 +1,9 @@
 {
-	"name": "it-manie/iqrf",
-	"description": "IQRF library for Nette Framework.",
-	"keywords": ["iqrf", "api", "nette"],
+	"name": "roman3349/iqrf-cloud-nette",
+	"description": "IQRF Cloud API wrapper for Nette Framework.",
+	"keywords": ["iqrf", "cloud", "api", "nette"],
 	"type": "library",
-	"homepage": "https://github.com/ITManie/IQRF",
+	"homepage": "https://github.com/Roman3349/iqrf-cloud-nette",
 	"license": ["GPL-3.0"],
 	"authors": [
 		{
@@ -24,11 +24,11 @@
 	},
 	"support": {
 		"email": "ondracek.roman@centrum.cz",
-		"issues": "https://github.com/ITManie/IQRF/issues"
+		"issues": "https://github.com/Roman3349/iqrf-cloud-nette/issues"
 	},
 	"autoload": {
 		"psr-4": {
-			"ITManie\\IQRF\\": "src/"
+			"IQRF\\Cloud\\": "src/"
 		}
 	},
 	"config": {

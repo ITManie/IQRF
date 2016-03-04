@@ -1,10 +1,10 @@
 <?php
 
-namespace ITManie\IQRF\Request;
+namespace IQRF\Cloud\Request;
 
-use ITManie\IQRF\IQRF,
-	ITManie\IQRF\Config,
-	ITManie\IQRF\Utils;
+use IQRF\Cloud\IQRF,
+	IQRF\Cloud\Config,
+	IQRF\Cloud\Utils;
 
 class Gateway {
 

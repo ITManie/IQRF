@@ -1,6 +1,6 @@
 <?php
 
-namespace ITManie\IQRF;
+namespace IQRF\Cloud;
 
 use Nette\Object,
 	Nette\Utils\Validators;

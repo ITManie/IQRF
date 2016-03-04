@@ -1,6 +1,6 @@
 <?php
 
-namespace ITManie\IQRF\Response;
+namespace IQRF\Cloud\Response;
 
 class Status {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ITManie\IQRF\DI;
+namespace IQRF\Cloud\DI;
 
 use Nette\DI\CompilerExtension,
 	Nette\DI\Compiler,
@@ -25,7 +25,7 @@ class IQRFExtension extends CompilerExtension {
 		$config = $this->getConfig($this->defaults);
 		$builder = $this->getContainerBuilder();
 		$builder->addDefinition($this->prefix(self::EXTENSION_NAME))
-				->setClass('ITManie\IQRF\Config', [$config['apiKey'], $config['userID']]);
+				->setClass('IQRF\Cloud\Config', [$config['apiKey'], $config['userID']]);
 	}
 
 	/**

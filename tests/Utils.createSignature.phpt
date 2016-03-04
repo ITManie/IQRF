@@ -1,6 +1,6 @@
 <?php
 
-use ITManie\IQRF\Utils,
+use IQRF\Cloud\Utils,
 	Tester\Assert;
 
 require __DIR__ . '/bootstrap.php';

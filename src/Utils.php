@@ -1,8 +1,8 @@
 <?php
 
-namespace ITManie\IQRF;
+namespace IQRF\Cloud;
 
-use ITManie\IQRF\Config,
+use IQRF\Cloud\Config,
 	GuzzleHttp\Client;
 
 class Utils {
