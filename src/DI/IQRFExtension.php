@@ -20,8 +20,8 @@ class IQRFExtension extends CompilerExtension {
 	 */
 	const EXTENSION_NAME = 'iqrf';
 
-	/** 
-	 * @var array Default setting 
+	/**
+	 * @var array Default setting
 	 */
 	private $defaults = ['apiKey' => null, 'userID' => null];
 
@@ -37,7 +37,7 @@ class IQRFExtension extends CompilerExtension {
 	public function loadConfiguration() {
 		$config = $this->getConfig($this->defaults);
 		$builder = $this->getContainerBuilder();
-		
+
 		Validators::assert($config['apiKey'], 'string', 'API key');
 		Validators::assert($config['userID'], 'string', 'User ID');
 

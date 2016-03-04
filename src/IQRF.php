@@ -22,13 +22,13 @@ class IQRF extends Object {
 	 */
 	const API_VER = '2';
 
-	/** 
-	 * @var string 
+	/**
+	 * @var string
 	 */
 	private $apiKey;
 
-	/** 
-	 * @var int 
+	/**
+	 * @var int
 	 */
 	private $userID;
 
