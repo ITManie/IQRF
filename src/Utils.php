@@ -2,7 +2,7 @@
 
 namespace IQRF\Cloud;
 
-use IQRF\Cloud\Config,
+use IQRF\Cloud\IQRF,
 	GuzzleHttp\Client;
 
 /**
@@ -40,9 +40,8 @@ class Utils {
 	 * @param string $parameter Parameter of request
 	 * @return mixed Response
 	 */
-	public function createRequest($parameter) {
-		$config = new Config();
-		$signature = $this->createSignature($parameter, $config->getApiKey(), $this->getIPv4Addr(), time());
+	public static function createRequest($parameter) {
+		$signature = $this->createSignature($parameter, IQRF::getApiKey(), $this->getIPv4Addr(), time());
 		$parameter += '&signature=' . $signature;
 		$client = new Client(['base_uri' => IQRF::API_URI]);
 		$response = $client->request('GET', $parameter);
