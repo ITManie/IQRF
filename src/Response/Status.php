@@ -2,8 +2,17 @@
 
 namespace IQRF\Cloud\Response;
 
+/**
+ * Status
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @package IQRF\Cloud\Response
+ */
+
 class Status {
 
+	/**
+	 * @var array Status codes and messages
+	 */
 	private $array = ['OK' => 'OK',
 		'ERROR 1' => 'Data string exceeds 64B.',
 		'ERROR 2' => 'Unfilled required fields. Required parameter(s) missing.',

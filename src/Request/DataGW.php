@@ -6,6 +6,12 @@ use IQRF\Cloud\IQRF,
 	IQRF\Cloud\Config,
 	IQRF\Cloud\Utils;
 
+/**
+ * DataGW
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @package IQRF\Cloud\Request
+ */
+
 class DataGW {
 
 	/**

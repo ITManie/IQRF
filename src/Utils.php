@@ -5,6 +5,12 @@ namespace IQRF\Cloud;
 use IQRF\Cloud\Config,
 	GuzzleHttp\Client;
 
+/**
+ * Utils
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @package IQRF\Cloud
+ */
+
 class Utils {
 
 	/**

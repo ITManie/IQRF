@@ -4,12 +4,25 @@ namespace IQRF\Cloud\DI;
 
 use Nette\DI\CompilerExtension,
 	Nette\DI\Compiler,
-	Nette\Configurator;
+	Nette\Configurator,
+	Nette\Utils\Validators;
+
+/**
+ * IQRFExtension
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @package IQRF\Cloud\DI
+ */
 
 class IQRFExtension extends CompilerExtension {
 
+	/**
+	 * @var string Extension name
+	 */
 	const EXTENSION_NAME = 'iqrf';
 
+	/** 
+	 * @var array Default setting 
+	 */
 	private $defaults = ['apiKey' => null, 'userID' => null];
 
 	/**
@@ -24,15 +37,19 @@ class IQRFExtension extends CompilerExtension {
 	public function loadConfiguration() {
 		$config = $this->getConfig($this->defaults);
 		$builder = $this->getContainerBuilder();
+		
+		Validators::assert($config['apiKey'], 'string', 'API key');
+		Validators::assert($config['userID'], 'string', 'User ID');
+
 		$builder->addDefinition($this->prefix(self::EXTENSION_NAME))
-				->setClass('IQRF\Cloud\Config', [$config['apiKey'], $config['userID']]);
+				->setClass('IQRF\Cloud\IQRF', [$config['apiKey'], $config['userID']]);
 	}
 
 	/**
-	 * @param Nette\Configurator $config
+	 * @param Configurator $config
 	 */
 	public static function register(Configurator $config) {
-		$config->onCompile[] = function ($config, Compiler $compiler) {
+		$config->onCompile[] = function (Configurator $configurator, Compiler $compiler) {
 			$compiler->addExtension(self::EXTENSION_NAME, new IQRFExtension);
 		};
 	}
