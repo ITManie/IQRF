@@ -27,7 +27,7 @@ class IQRFExtension extends CompilerExtension {
 
 	/**
 	 * @param string $apiKey API key
-	 * @param int $userID USer ID
+	 * @param int $userID User ID
 	 */
 	public function __construct($apiKey = null, $userID = null) {
 		$this->defaults['apiKey'] = $apiKey;
@@ -39,7 +39,7 @@ class IQRFExtension extends CompilerExtension {
 		$builder = $this->getContainerBuilder();
 
 		Validators::assert($config['apiKey'], 'string', 'API key');
-		Validators::assert($config['userID'], 'string', 'User ID');
+		Validators::assert($config['userID'], 'int', 'User ID');
 
 		$builder->addDefinition($this->prefix(self::EXTENSION_NAME))
 				->setClass('IQRF\Cloud\IQRF', [$config['apiKey'], $config['userID']]);
