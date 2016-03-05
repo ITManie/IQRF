@@ -48,7 +48,7 @@ class IQRF extends Object {
 	 * Get API key
 	 * @return string API key
 	 */
-	public static function getApiKey() {
+	public function getApiKey() {
 		return $this->apiKey;
 	}
 
@@ -56,7 +56,7 @@ class IQRF extends Object {
 	 * Get User ID
 	 * @return int User ID
 	 */
-	public static function getUserID() {
+	public function getUserID() {
 		return $this->userID;
 	}
 }

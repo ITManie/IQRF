@@ -20,7 +20,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getLast($gatewayID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&last=1&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
@@ -32,7 +33,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getNew($gatewayID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&new=1&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
@@ -45,7 +47,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFrom($gatewayID, $messageID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&from=' . $messageID . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
@@ -58,7 +61,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getTo($gatewayID, $messageID, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&to=' . $messageID . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
@@ -71,7 +75,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFromTo($gatewayID, $from, $to) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&from=' . $from . '&to=' . $to;
 		return Utils::createRequest($parameter);
 	}
@@ -84,7 +89,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFromTime($gatewayID, $fromTime, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&from_time=' . $fromTime . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
@@ -97,7 +103,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getToTime($gatewayID, $toTime, $count = 1) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&to_time=' . $toTime . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
@@ -110,7 +117,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFromTimeToTime($gatewayID, $fromTime, $toTime) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
 		return Utils::createRequest($parameter);
 	}
@@ -122,7 +130,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function send($gatewayID, $data) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=uplc&data=' . $data;
 		return Utils::createRequest($parameter);
 	}

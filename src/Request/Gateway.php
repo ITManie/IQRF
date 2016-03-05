@@ -19,7 +19,8 @@ class Gateway {
 	 * @param string $gatewayPW Gateway password
 	 */
 	public function add($gatewayID, $gatewayPW) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&gpw=' . $gatewayPW . '&cmd=add';
 		return Utils::createRequest($parameter);
 	}
@@ -29,7 +30,8 @@ class Gateway {
 	 * @param int $gatewayID Gateway ID
 	 */
 	public function remove($gatewayID) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=rem';
 		return Utils::createRequest($parameter);
 	}
@@ -40,7 +42,8 @@ class Gateway {
 	 * @param string $gatewayAlias Gateway alias
 	 */
 	public function edit($gatewayID, $gatewayAlias) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=edit&alias=' . $gatewayAlias;
 		return Utils::createRequest($parameter);
 	}
@@ -49,7 +52,8 @@ class Gateway {
 	 * Get list of gateways
 	 */
 	public function getList() {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID() . '&cmd=list';
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID() . '&cmd=list';
 		return Utils::createRequest($parameter);
 	}
 
@@ -58,7 +62,8 @@ class Gateway {
 	 * @param int $gatewayID Gateway ID
 	 */
 	public function getInfo($gatewayID) {
-		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . IQRF::getUserID()
+		$iqrf = new IQRF();
+		$parameter = 'ver=' . IQRF::API_VER . '&uid=' . $iqrf->getUserID()
 				. '&gid=' . $gatewayID . '&cmd=info';
 		return Utils::createRequest($parameter);
 	}

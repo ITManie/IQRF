@@ -41,7 +41,8 @@ class Utils {
 	 * @return mixed Response
 	 */
 	public static function createRequest($parameter) {
-		$signature = $this->createSignature($parameter, IQRF::getApiKey(), $this->getIPv4Addr(), time());
+		$iqrf = new IQRF();
+		$signature = $this->createSignature($parameter, $iqrf->getApiKey(), $this->getIPv4Addr(), time());
 		$parameter += '&signature=' . $signature;
 		$client = new Client(['base_uri' => IQRF::API_URI]);
 		$response = $client->request('GET', $parameter);
