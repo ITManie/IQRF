@@ -7,8 +7,7 @@ require __DIR__ . '/../bootstrap.php';
 
 $status = new Status();
 
-$array = ['OK' => 'OK',
-	'ERROR 1' => 'Data string exceeds 64B.',
+$array = ['ERROR 1' => 'Data string exceeds 64B.',
 	'ERROR 2' => 'Unfilled required fields. Required parameter(s) missing.',
 	'ERROR 3' => 'No data sent. Writing error, data has not been written.',
 	'ERROR 4' => 'Data access denied. The user has no access to given GW.',
@@ -26,8 +25,9 @@ $array = ['OK' => 'OK',
 	'ERROR 16' => 'Maximum count of GW is reached according to user\'s license.',
 	'ERROR 17' => 'User does not have API key.',
 	'ERROR 18' => 'Incorrect signature.',
-	'ERROR' => 'Invalid status code.'];
+	'ERROR 19' => 'Invalid response.'];
 
+Assert::same('OK', $status->getMessage('OK'));
 foreach ($array as $code => $message) {
-	Assert::same($message, $status->codeToMsg($code));
+	Assert::same($message, $status->getMessage($code . ';' . $message));
 }
