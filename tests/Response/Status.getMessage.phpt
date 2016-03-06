@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * TEST: IQRF\Cloud\Response\Status
+ * @phpVersion >= 5.5
+ */
+
 use IQRF\Cloud\Response\Status,
 	Tester\Assert;
 

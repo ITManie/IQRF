@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * TEST: IQRF\Cloud\Response\DataAPI
+ * @phpVersion >= 5.5
+ */
+
 use IQRF\Cloud\Response\DataAPI,
 	Tester\Assert;
 

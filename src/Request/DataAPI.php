@@ -9,7 +9,6 @@ use IQRF\Cloud\Utils;
  * @author Roman Ondráček <ondracek.roman@centrum.cz>
  * @package IQRF\Cloud~Request
  */
-
 class DataAPI {
 
 	/**
@@ -21,8 +20,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getLast($apiVer, $userID, $gatewayID, $count = 1) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&last=1&count=' . $count;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&last=1&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
 
@@ -35,8 +34,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getNew($apiVer, $userID, $gatewayID, $count = 1) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&new=1&count=' . $count;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&new=1&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
 
@@ -50,8 +49,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFrom($apiVer, $userID, $gatewayID, $messageID, $count = 1) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&from=' . $messageID . '&count=' . $count;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&from=' . $messageID . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
 
@@ -65,8 +64,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getTo($apiVer, $userID, $gatewayID, $messageID, $count = 1) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&to=' . $messageID . '&count=' . $count;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&to=' . $messageID . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
 
@@ -80,8 +79,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFromTo($apiVer, $userID, $gatewayID, $from, $to) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&from=' . $from . '&to=' . $to;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&from=' . $from . '&to=' . $to;
 		return Utils::createRequest($parameter);
 	}
 
@@ -95,8 +94,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFromTime($apiVer, $userID, $gatewayID, $fromTime, $count = 1) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&from_time=' . $fromTime . '&count=' . $count;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&from_time=' . $fromTime . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
 
@@ -110,8 +109,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getToTime($apiVer, $userID, $gatewayID, $toTime, $count = 1) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&to_time=' . $toTime . '&count=' . $count;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&to_time=' . $toTime . '&count=' . $count;
 		return Utils::createRequest($parameter);
 	}
 
@@ -125,8 +124,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function getFromTimeToTime($apiVer, $userID, $gatewayID, $fromTime, $toTime) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
 		return Utils::createRequest($parameter);
 	}
 
@@ -139,8 +138,8 @@ class DataAPI {
 	 * @return string $response Response to the request
 	 */
 	public function send($apiVer, $userID, $gatewayID, $data) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID
-				. '&gid=' . $gatewayID . '&cmd=uplc&data=' . $data;
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+				. '&cmd=uplc&data=' . $data;
 		return Utils::createRequest($parameter);
 	}
 
