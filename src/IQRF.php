@@ -15,35 +15,43 @@ use Nette\Object,
 class IQRF extends Object {
 
 	/**
-	 * @var string
+	 * @var string API URL
 	 */
 	const API_URI = 'https://cloud.iqrf.org/api/api.php?';
 
 	/**
-	 * @var string
+	 * @var string API version
 	 */
 	const API_VER = '2';
 
 	/**
-	 * @var string
+	 * @var string API key
 	 */
 	private $apiKey;
+	
+	/**
+	 * @var string Server IPv4 address
+	 */
+	private $ipAddr;
 
 	/**
-	 * @var int
+	 * @var string User name
 	 */
-	private $userID;
+	private $userName;
 
 	/**
 	 * @param string $apiKey API key
-	 * @param int $userID User ID
+	 * @param string $ipAddr Server IPv4 address
+	 * @param str $userName User name
 	 */
-	public function __construct($apiKey, $userID) {
+	public function __construct($apiKey, $ipAddr, $userName) {
 		Validators::assert($apiKey, 'string', 'apiKey');
-		Validators::assert($userID, 'int', 'userID');
+		Validators::assert($ipAddr, 'string', 'ipAddr');
+		Validators::assert($userName, 'string', 'userName');
 
 		$this->apiKey = $apiKey;
-		$this->userID = $userID;
+		$this->ipAddr = $ipAddr;
+		$this->userName = $userName;
 	}
 
 	/**
@@ -55,11 +63,19 @@ class IQRF extends Object {
 	}
 
 	/**
-	 * Get User ID
-	 * @return int User ID
+	 * Get Server IPv4 address
+	 * @return string Server IPv4 address
 	 */
-	public function getUserID() {
-		return $this->userID;
+	public function getIpAddr() {
+		return $this->ipAddr;
+	}
+	
+	/**
+	 * Get User name
+	 * @return string User name
+	 */
+	public function getUserName() {
+		return $this->userName;
 	}
 
 }

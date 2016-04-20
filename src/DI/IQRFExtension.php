@@ -24,15 +24,17 @@ class IQRFExtension extends CompilerExtension {
 	/**
 	 * @var array Default setting
 	 */
-	private $defaults = ['apiKey' => null, 'userID' => null];
+	private $defaults = ['apiKey' => null, 'ipAddr' => '127.0.0.1', 'userName' => 'admin'];
 
 	/**
 	 * @param string $apiKey API key
-	 * @param int $userID User ID
+	 * @param string $ipAddr Server IPv4 address
+	 * @param string $userName User name
 	 */
-	public function __construct($apiKey = null, $userID = null) {
+	public function __construct($apiKey = null, $ipAddr = '127.0.0.1', $userName = 'admin') {
 		$this->defaults['apiKey'] = $apiKey;
-		$this->defaults['userID'] = $userID;
+		$this->defaults['ipAddr'] = $ipAddr;
+		$this->defaults['userName'] = $userName;
 	}
 
 	public function loadConfiguration() {
@@ -40,10 +42,11 @@ class IQRFExtension extends CompilerExtension {
 		$builder = $this->getContainerBuilder();
 
 		Validators::assert($config['apiKey'], 'string', 'API key');
-		Validators::assert($config['userID'], 'int', 'User ID');
+		Validators::assert($config['ipAddr'], 'string', 'Server IPv4 address');
+		Validators::assert($config['userName'], 'string', 'User name');
 
 		$builder->addDefinition($this->prefix(self::EXTENSION_NAME))
-				->setClass('IQRF\Cloud\IQRF', [$config['apiKey'], $config['userID']]);
+				->setClass('IQRF\Cloud\IQRF', [$config['apiKey'], $config['ipAddr'], $config['userName']]);
 	}
 
 	/**

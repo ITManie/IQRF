@@ -9,10 +9,11 @@ use IQRF\Cloud\IQRF,
 
 require __DIR__ . '/bootstrap.php';
 
-
 $apiKey = 'k6wuaem3wtaiupmnuc7cziuvaup2fxim';
-$userID = 123;
-$iqrf = new IQRF($apiKey, $userID);
+$ipAddr = '127.0.0.1';
+$userName = 'admin';
+$iqrf = new IQRF($apiKey, $ipAddr, $userName);
 
 Assert::same($apiKey, $iqrf->getApiKey());
-Assert::same($userID, $iqrf->getUserID());
+Assert::same($ipAddr, $iqrf->getIpAddr());
+Assert::same($userName, $iqrf->getUserName());

@@ -15,15 +15,6 @@ use IQRF\Cloud\IQRF,
 class Utils {
 
 	/**
-	 * Get IPv4 of server
-	 * @return string IPv4 address
-	 */
-	public function getIPv4Addr() {
-		$client = new Client(['base_uri' => 'https://api.ipify.org']);
-		return $client->request('GET')->getBody()->getContents();
-	}
-
-	/**
 	 * Create md5 hash for IQRF API signature
 	 * @param string $parameterPart Parameter of request
 	 * @param string $apiKey API key
@@ -32,8 +23,8 @@ class Utils {
 	 * @return string md5 hash
 	 */
 	public function createSignature($parameterPart, $apiKey, $ipAddr, $time) {
-		$md5 = md5($parameterPart . '|' . $apiKey . '|' . $ipAddr . '|' . round($time / 600));
-		return $md5;
+		return md5($parameterPart . '|' . $apiKey . '|' . $ipAddr . '|'
+				. round($time / 600));
 	}
 
 	/**
@@ -43,7 +34,7 @@ class Utils {
 	 */
 	public static function createRequest($parameter) {
 		$iqrf = new IQRF();
-		$signature = $this->createSignature($parameter, $iqrf->getApiKey(), $this->getIPv4Addr(), time());
+		$signature = $this->createSignature($parameter, $iqrf->getApiKey(), $iqrf->getIpAddr(), time());
 		$parameter += '&signature=' . $signature;
 		$client = new Client(['base_uri' => IQRF::API_URI]);
 		$response = $client->request('GET', $parameter);

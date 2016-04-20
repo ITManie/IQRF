@@ -27,7 +27,8 @@ extensions:
 
 iqrf:
 	apiKey: 'k6wuaem3wtaiupmnuc7cziuvaup2fxim'
-	userID: 123
+	ipAddr: '127.0.0.1'
+	userName: admin
 
 php:
     date.timezone: Europe/Prague

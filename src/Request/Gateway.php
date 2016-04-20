@@ -16,7 +16,7 @@ class Gateway {
 	/**
 	 * Add new gateway
 	 * @param int $apiVer API version
-	 * @param int $userID User ID
+	 * @param string $userName User name
 	 * @param int $gatewayID Gateway ID
 	 * @param string $gatewayPW Gateway password
 	 * @return string $response Response to the request
@@ -30,7 +30,7 @@ class Gateway {
 	/**
 	 * Remove gateway
 	 * @param int $apiVer API version
-	 * @param int $userID User ID
+	 * @param string $userName User name
 	 * @param int $gatewayID Gateway ID
 	 * @return string $response Response to the request
 	 */
@@ -43,7 +43,7 @@ class Gateway {
 	/**
 	 * Edit gateway
 	 * @param int $apiVer API version
-	 * @param int $userID User ID
+	 * @param string $userName User name
 	 * @param int $gatewayID Gateway ID
 	 * @param string $gatewayAlias Gateway alias
 	 * @return string $response Response to the request
@@ -57,7 +57,7 @@ class Gateway {
 	/**
 	 * Get list of gateways
 	 * @param int $apiVer API version
-	 * @param int $userID User ID
+	 * @param string $userName User name
 	 * @return string $response Response to the request
 	 */
 	public function getList($apiVer, $userID) {
@@ -68,7 +68,7 @@ class Gateway {
 	/**
 	 * Get gateway info
 	 * @param int $apiVer API version
-	 * @param int $userID User ID
+	 * @param string $userName User name
 	 * @param int $gatewayID Gateway ID
 	 * @return string $response Response to the request
 	 */
