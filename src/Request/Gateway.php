@@ -17,12 +17,12 @@ class Gateway {
 	 * Add new gateway
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param string $gatewayPW Gateway password
 	 * @return string $response Response to the request
 	 */
-	public function add($apiVer, $userID, $gatewayID, $gatewayPW) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+	public function add($apiVer, $userName, $gatewayID, $gatewayPW) {
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
 				. '&gpw=' . $gatewayPW . '&cmd=add';
 		return Utils::createRequest($parameter);
 	}
@@ -31,11 +31,11 @@ class Gateway {
 	 * Remove gateway
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @return string $response Response to the request
 	 */
-	public function remove($apiVer, $userID, $gatewayID) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+	public function remove($apiVer, $userName, $gatewayID) {
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
 				. '&cmd=rem';
 		return Utils::createRequest($parameter);
 	}
@@ -44,12 +44,12 @@ class Gateway {
 	 * Edit gateway
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param string $gatewayAlias Gateway alias
 	 * @return string $response Response to the request
 	 */
-	public function edit($apiVer, $userID, $gatewayID, $gatewayAlias) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+	public function edit($apiVer, $userName, $gatewayID, $gatewayAlias) {
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
 				. '&cmd=edit&alias=' . $gatewayAlias;
 		return Utils::createRequest($parameter);
 	}
@@ -60,8 +60,8 @@ class Gateway {
 	 * @param string $userName User name
 	 * @return string $response Response to the request
 	 */
-	public function getList($apiVer, $userID) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&cmd=list';
+	public function getList($apiVer, $userName) {
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&cmd=list';
 		return Utils::createRequest($parameter);
 	}
 
@@ -69,11 +69,11 @@ class Gateway {
 	 * Get gateway info
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @return string $response Response to the request
 	 */
-	public function getInfo($apiVer, $userID, $gatewayID) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userID . '&gid=' . $gatewayID
+	public function getInfo($apiVer, $userName, $gatewayID) {
+		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
 				. '&cmd=info';
 		return Utils::createRequest($parameter);
 	}

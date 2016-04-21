@@ -9,7 +9,7 @@ namespace IQRF\Cloud\Response;
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-class DataAPI {
+class DataGW {
 
 	/**
 	 * Get data send via API from response

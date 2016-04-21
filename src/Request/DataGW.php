@@ -17,7 +17,7 @@ class DataGW {
 	 * Get latest data from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $count The number of messages
 	 * @return string $response Response to the request
 	 */
@@ -31,7 +31,7 @@ class DataGW {
 	 * Get new data from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $count The number of messages
 	 * @return string $response Response to the request
 	 */
@@ -45,7 +45,7 @@ class DataGW {
 	 * Get data from message ID from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $messageID From message ID
 	 * @param int $count The number of messages
 	 * @return string $response Response to the request
@@ -60,7 +60,7 @@ class DataGW {
 	 * Get data to message ID from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $messageID To message ID
 	 * @param int $count The number of messages
 	 * @return string $response Response to the request
@@ -75,7 +75,7 @@ class DataGW {
 	 * Get data from and to message IDs from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $from From message ID
 	 * @param int $to To message ID
 	 * @return string $response Response to the request
@@ -90,7 +90,7 @@ class DataGW {
 	 * Get data from time of message from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $fromTime Time from sending message
 	 * @param int $count The number of messages
 	 * @return string $response Response to the request
@@ -105,7 +105,7 @@ class DataGW {
 	 * Get data to time of message from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $toTime Time to sending message
 	 * @param int $count The number of messages
 	 * @return string $response Response to the request
@@ -120,7 +120,7 @@ class DataGW {
 	 * Get data from time of message and to time of message from the Cloud (incoming from the GW)
 	 * @param int $apiVer API version
 	 * @param string $userName User name
-	 * @param int $gatewayID Gateway ID
+	 * @param string $gatewayID Gateway ID
 	 * @param int $fromTime Time from sending message
 	 * @param int $toTime Time to sending message
 	 * @return string $response Response to the request

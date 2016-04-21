@@ -28,7 +28,7 @@ class IQRF extends Object {
 	 * @var string API key
 	 */
 	private $apiKey;
-	
+
 	/**
 	 * @var string Server IPv4 address
 	 */
@@ -69,7 +69,7 @@ class IQRF extends Object {
 	public function getIpAddr() {
 		return $this->ipAddr;
 	}
-	
+
 	/**
 	 * Get User name
 	 * @return string User name
