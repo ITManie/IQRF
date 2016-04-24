@@ -2,3 +2,5 @@ vendor/
 tests/output/
 tests/*/output/
 nbproject/
+composer.lock
+coverage/
