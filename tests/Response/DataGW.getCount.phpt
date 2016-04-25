@@ -20,4 +20,4 @@ $response = [['76'],
 
 $data = new DataGW($response);
 
-Assert::same($response, $data->getData());
+Assert::same('76', $data->getCount());

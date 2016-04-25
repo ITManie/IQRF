@@ -12,15 +12,31 @@ namespace IQRF\Cloud\Response;
 class DataGW {
 
 	/**
-	 * Get data send via API from response
-	 * @param string $response
+	 * @var array
+	 */
+	private $data;
+
+	/**
+	 * @param string $data
+	 */
+	public function __construct($data) {
+		$this->data = $data;
+	}
+
+	/**
+	 * Get data
 	 * @return array
 	 */
-	public static function getData($response) {
-		$array = array_map(function($value) {
-			return array_slice(explode(';', trim($value, ';')), 0);
-		}, explode('\r\n', trim($response, '\\r\\n')));
-		return $array;
+	public function getData() {
+		return $this->data;
+	}
+
+	/**
+	 * Get count
+	 * @return string
+	 */
+	public function getCount() {
+		return $this->data[0][0];
 	}
 
 }

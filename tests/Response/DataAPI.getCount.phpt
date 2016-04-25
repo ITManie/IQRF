@@ -23,4 +23,4 @@ $response = [['17'],
 
 $data = new DataAPI($response);
 
-Assert::same($response, $data->getData());
+Assert::same('17', $data->getCount());
