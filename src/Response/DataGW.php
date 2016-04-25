@@ -2,6 +2,8 @@
 
 namespace IQRF\Cloud\Response;
 
+use Nette\Utils\Arrays;
+
 /**
  * DataAPI
  * @author Roman Ondráček <ondracek.roman@centrum.cz>
@@ -15,6 +17,11 @@ class DataGW {
 	 * @var array
 	 */
 	private $data;
+
+	/**
+	 * @var int
+	 */
+	private $id;
 
 	/**
 	 * @param string $data
@@ -53,6 +60,47 @@ class DataGW {
 	 */
 	public function getLastedID() {
 		return end($this->data)[0];
+	}
+
+	/**
+	 * Get data from ID
+	 * @param int $id
+	 * @return \IQRF\Cloud\Response\DataAPI
+	 * @throws \OutOfRangeException Non exist ID
+	 */
+	public function getID($id) {
+		foreach ($this->data as $key => $value) {
+			if ($value[0] == (string) $id) {
+				$this->id = Arrays::searchKey($this->data, $key);
+				return $this;
+			}
+		}
+		if (empty($this->id)) {
+			throw new \OutOfRangeException('Non exist ID');
+		}
+	}
+
+	/**
+	 * Get data value
+	 * @throws \InvalidArgumentException
+	 */
+	public function getValue() {
+		if (empty($this->id)) {
+			throw new \InvalidArgumentException('ID is empty');
+		}
+		return $this->data[$this->id][2];
+	}
+
+	/**
+	 * Get time send data
+	 * @return string Epoch time of send data
+	 * @throws \InvalidArgumentException
+	 */
+	public function getTime() {
+		if (empty($this->id)) {
+			throw new \InvalidArgumentException('ID is empty');
+		}
+		return $this->data[$this->id][1];
 	}
 
 }
