@@ -52,5 +52,5 @@ foreach ($array as $code => $message) {
 }
 Assert::exception(function() {
 	$status = new Status();
-	Assert::same('Invalid response.', $status->getCode('ERROR 19;Invalid response.'));
+	Assert::same('Invalid response.', $status->getMessage('ERROR 19;Invalid response.'));
 }, 'OutOfRangeException', 'Invalid response');
