@@ -83,13 +83,53 @@ class DataAPI {
 	/**
 	 * Get data value
 	 * @return string Sended data
-	 * @throws \InvalidArgumentException
+	 * @throws \InvalidArgumentException ID is empty
 	 */
 	public function getValue() {
 		if (empty($this->id)) {
 			throw new \InvalidArgumentException('ID is empty');
 		}
 		return $this->data[$this->id][1];
+	}
+
+	/**
+	 * Get date send time
+	 * @return string Date send time
+	 * @throws \InvalidArgumentException ID is empty
+	 */
+	public function getSendTime() {
+		if (empty($this->id)) {
+			throw new \InvalidArgumentException('ID is empty');
+		}
+		return $this->data[$this->id][2];
+	}
+
+	/**
+	 * Get data status
+	 * @return string Status
+	 * @throws \InvalidArgumentException ID is empty
+	 */
+	public function getStatus() {
+		if (empty($this->id)) {
+			throw new \InvalidArgumentException('ID is empty');
+		}
+		return $this->data[$this->id][3];
+	}
+
+	/**
+	 * Get data received time
+	 * @return string Datetime
+	 * @throws \InvalidArgumentException ID is empty
+	 * @throws \BadFunctionCallException Data has not yet been received
+	 */
+	public function getReceiveTime() {
+		if (empty($this->id)) {
+			throw new \InvalidArgumentException('ID is empty');
+		} else if ($this->getStatus() == 'sent' || $this->getStatus() == 'confirmed') {
+			return $this->data[$this->id][4];
+		} else {
+			throw new \BadFunctionCallException('Data has not yet been received');
+		}
 	}
 
 }

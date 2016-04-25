@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TEST: IQRF\Cloud\Response\Data
+ * TEST: IQRF\Cloud\Response\DataGW
  * @phpVersion >= 5.5
  */
 use IQRF\Cloud\Response\DataGW,

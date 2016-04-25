@@ -64,7 +64,7 @@ class DataGW {
 
 	/**
 	 * Get data from ID
-	 * @param int $id
+	 * @param int $id Data ID
 	 * @return \IQRF\Cloud\Response\DataAPI
 	 * @throws \OutOfRangeException Non exist ID
 	 */
@@ -82,7 +82,8 @@ class DataGW {
 
 	/**
 	 * Get data value
-	 * @throws \InvalidArgumentException
+	 * @return string Data value
+	 * @throws \InvalidArgumentException ID is empty
 	 */
 	public function getValue() {
 		if (empty($this->id)) {
@@ -94,7 +95,7 @@ class DataGW {
 	/**
 	 * Get time send data
 	 * @return string time of send data
-	 * @throws \InvalidArgumentException
+	 * @throws \InvalidArgumentException ID is empty
 	 */
 	public function getTime() {
 		if (empty($this->id)) {
