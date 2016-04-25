@@ -18,20 +18,28 @@
  */
 
 /**
- * TEST: IQRF\Cloud\Response\DataAPI
+ * TEST: IQRF\Cloud\IQRF
  * @phpVersion >= 5.5
  */
-use IQRF\Cloud\Response\DataAPI,
+use IQRF\Cloud\IQRF,
 	Tester\Assert;
 
-require __DIR__ . '/../bootstrap.php';
+require __DIR__ . '/bootstrap.php';
 
-$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:39:34', 'confirmed', '2016-03-30 20:39:41'],];
-$data = new DataAPI($response);
+class IQRFTest extends \Tester\TestCase {
 
-Assert::same('2016-03-30 20:39:34', $data->getID(8)->getSendTime());
-Assert::exception(function() {
-	$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:39:34', 'confirmed', '2016-03-30 20:39:41'],];
-	$data = new DataAPI($response);
-	Assert::same($data, $data->getSendTime());
-}, 'InvalidArgumentException', 'ID is empty');
+	public function testConstructor() {
+		$apiKey = 'k6wuaem3wtaiupmnuc7cziuvaup2fxim';
+		$ipAddr = '127.0.0.1';
+		$userName = 'admin';
+		$iqrf = new IQRF($apiKey, $ipAddr, $userName);
+
+		Assert::same($apiKey, $iqrf->getApiKey());
+		Assert::same($ipAddr, $iqrf->getIpAddr());
+		Assert::same($userName, $iqrf->getUserName());
+	}
+
+}
+
+$test = new IQRFTest();
+$test->run();
