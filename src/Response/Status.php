@@ -26,7 +26,7 @@ class Status {
 				Validators::isInRange(explode(' ', $response)[1], [1, 18])) {
 			return explode(';', $response)[0];
 		} else {
-			return 'Invalid response.';
+			throw new \OutOfRangeException('Invalid response');
 		}
 	}
 
@@ -42,7 +42,7 @@ class Status {
 				Validators::isInRange(explode(' ', $response)[1], [1, 18])) {
 			return explode(';', $response)[1];
 		} else {
-			return 'Invalid response.';
+			throw new \OutOfRangeException('Invalid response');
 		}
 	}
 
