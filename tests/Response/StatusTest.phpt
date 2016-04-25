@@ -1,25 +1,12 @@
 <?php
 
 /**
- * Copyright (C) 2016  Roman Ondráček
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/**
  * TEST: IQRF\Cloud\Response\Status
  * @phpVersion >= 5.5
+ * @testCase
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @license https://gnu.org/licenses/gpl.html GPLv3
+ * @version 1.0.0
  */
 use IQRF\Cloud\Response\Status,
 	Tester\Assert;
@@ -28,6 +15,9 @@ require __DIR__ . '/../bootstrap.php';
 
 class StatusTest extends \Tester\TestCase {
 
+	/**
+	 * @var array Status codes and messages
+	 */
 	protected $array = ['ERROR 1' => 'Data string exceeds 64B.',
 		'ERROR 2' => 'Unfilled required fields. Required parameter(s) missing.',
 		'ERROR 3' => 'No data sent. Writing error, data has not been written.',
@@ -47,6 +37,9 @@ class StatusTest extends \Tester\TestCase {
 		'ERROR 17' => 'User does not have API key.',
 		'ERROR 18' => 'Incorrect signature.'];
 
+	/**
+	 * @test
+	 */
 	public function testGetCode() {
 		$status = new Status();
 
@@ -60,6 +53,9 @@ class StatusTest extends \Tester\TestCase {
 		}, 'InvalidArgumentException', 'Invalid response');
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetMessage() {
 		$status = new Status();
 

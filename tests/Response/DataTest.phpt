@@ -1,25 +1,12 @@
 <?php
 
 /**
- * Copyright (C) 2016  Roman Ondráček
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/**
  * TEST: IQRF\Cloud\Response\Data
  * @phpVersion >= 5.5
+ * @testCase
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @license https://gnu.org/licenses/gpl.html GPLv3
+ * @version 1.0.0
  */
 use IQRF\Cloud\Response\Data,
 	Tester\Assert;
@@ -28,6 +15,9 @@ require __DIR__ . '/../bootstrap.php';
 
 class DataTest extends \Tester\TestCase {
 
+	/**
+	 * @test
+	 */
 	public function testGetData() {
 		$data = new Data();
 		$response = '76;;;\r\n' . '70;2016-03-31 17:43:12;DE01FF;\r\n' .
@@ -42,6 +32,9 @@ class DataTest extends \Tester\TestCase {
 		Assert::same($array, $data->getData($response));
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetAPI() {
 		$data = new Data();
 		$response = '17;;;;;\r\n'
@@ -60,6 +53,9 @@ class DataTest extends \Tester\TestCase {
 		Assert::same($array, $data->getAPI($response)->getData());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetGW() {
 		$data = new Data();
 		$response = '76;;;\r\n' . '70;2016-03-31 17:43:12;DE01FF;\r\n' .

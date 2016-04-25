@@ -24,7 +24,7 @@ use IQRF\Cloud\Utils;
 /**
  * DataAPI
  * @author Roman Ondráček <ondracek.roman@centrum.cz>
- * @package IQRF\Cloud~Request
+ * @package IQRF\Cloud\Request
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
@@ -145,20 +145,6 @@ class DataAPI {
 	public function getFromTimeToTime($apiVer, $userName, $gatewayID, $fromTime, $toTime) {
 		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
 				. '&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
-		return Utils::createRequest($parameter);
-	}
-
-	/**
-	 * Send data to IQRF Cloud
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @param string $gatewayID Gateway ID
-	 * @param mixed $data Data
-	 * @return string $response Response to the request
-	 */
-	public function send($apiVer, $userName, $gatewayID, $data) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
-				. '&cmd=uplc&data=' . $data;
 		return Utils::createRequest($parameter);
 	}
 

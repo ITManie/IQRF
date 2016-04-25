@@ -1,25 +1,12 @@
 <?php
 
 /**
- * Copyright (C) 2016  Roman Ondráček
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/**
  * TEST: IQRF\Cloud\Response\DataAPI
  * @phpVersion >= 5.5
+ * @testCase
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @license https://gnu.org/licenses/gpl.html GPLv3
+ * @version 1.0.0
  */
 use IQRF\Cloud\Response\DataAPI,
 	Tester\Assert;
@@ -37,26 +24,41 @@ class DataAPITest extends \Tester\TestCase {
 		['10', '000200000000FFFF0000', '2016-03-30 20:41:34', 'expired'],
 		['11', '000200000000FFFF0000', '2016-03-30 20:42:25', 'not­picked'],];
 
+	/**
+	 * @test
+	 */
 	public function testGetData() {
 		$data = new DataAPI($this->response);
 		Assert::same($this->response, $data->getData());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetCount() {
 		$data = new DataAPI($this->response);
 		Assert::same('17', $data->getCount());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetFirstID() {
 		$data = new DataAPI($this->response);
 		Assert::same('8', $data->getFirstID());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetLastedID() {
 		$data = new DataAPI($this->response);
 		Assert::same('11', $data->getLastedID());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetID() {
 		$data = new DataAPI($this->response);
 		Assert::same($data, $data->getID(8));
@@ -67,6 +69,9 @@ class DataAPITest extends \Tester\TestCase {
 		}, 'OutOfRangeException', 'Non exist ID');
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetValue() {
 		$data = new DataAPI($this->response);
 		Assert::same('000200000000FFFF0000', $data->getID(8)->getValue());
@@ -77,6 +82,9 @@ class DataAPITest extends \Tester\TestCase {
 		}, 'InvalidArgumentException', 'ID is empty');
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetSendTime() {
 		$data = new DataAPI($this->response);
 		Assert::same('2016-03-30 20:39:34', $data->getID(8)->getSendTime());
@@ -87,6 +95,9 @@ class DataAPITest extends \Tester\TestCase {
 		}, 'InvalidArgumentException', 'ID is empty');
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetStatus() {
 		$data = new DataAPI($this->response);
 		Assert::same('confirmed', $data->getID(8)->getStatus());
@@ -100,6 +111,9 @@ class DataAPITest extends \Tester\TestCase {
 		}, 'InvalidArgumentException', 'ID is empty');
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetReceiveTime() {
 		$data = new DataAPI($this->response);
 		Assert::same('2016-03-30 20:39:41', $data->getID(8)->getReceiveTime());

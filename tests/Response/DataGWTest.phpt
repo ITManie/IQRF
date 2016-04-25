@@ -1,25 +1,12 @@
 <?php
 
 /**
- * Copyright (C) 2016  Roman Ondráček
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-/**
  * TEST: IQRF\Cloud\Response\DataGW
  * @phpVersion >= 5.5
+ * @testCase
+ * @author Roman Ondráček <ondracek.roman@centrum.cz>
+ * @license https://gnu.org/licenses/gpl.html GPLv3
+ * @version 1.0.0
  */
 use IQRF\Cloud\Response\DataGW,
 	Tester\Assert;
@@ -36,26 +23,41 @@ class DataGWTest extends \Tester\TestCase {
 		['73', '2016-03-31 17:49:18', 'DE01FF'], ['74', '2016-03-31 17:49:48', 'DE01FF'],
 		['75', '2016-03-31 17:56:45', 'DE01FF'], ['76', '2016-03-31 17:58:18', 'DE01FF']];
 
+	/**
+	 * @test
+	 */
 	public function testGetData() {
 		$data = new DataGW($this->response);
 		Assert::same($this->response, $data->getData());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetCount() {
 		$data = new DataGW($this->response);
 		Assert::same('76', $data->getCount());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetFirstID() {
 		$data = new DataGW($this->response);
 		Assert::same('70', $data->getFirstID());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetLastedID() {
 		$data = new DataGW($this->response);
 		Assert::same('76', $data->getLastedID());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetID() {
 		$data = new DataGW($this->response);
 		Assert::same($data, $data->getID(76));
@@ -66,6 +68,9 @@ class DataGWTest extends \Tester\TestCase {
 		}, 'OutOfRangeException', 'Non exist ID');
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetValue() {
 		$data = new DataGW($this->response);
 		Assert::same('DE01FF', $data->getID(70)->getValue());
@@ -76,6 +81,9 @@ class DataGWTest extends \Tester\TestCase {
 		}, 'InvalidArgumentException', 'ID is empty');
 	}
 
+	/**
+	 * @test
+	 */
 	public function testGetTime() {
 		$data = new DataGW($this->response);
 		Assert::same('2016-03-31 17:43:12', $data->getID(70)->getTime());
