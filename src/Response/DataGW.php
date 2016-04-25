@@ -39,4 +39,20 @@ class DataGW {
 		return $this->data[0][0];
 	}
 
+	/**
+	 * Get first ID
+	 * @return string
+	 */
+	public function getFirstID() {
+		return $this->data[1][0];
+	}
+
+	/**
+	 * Get lasted ID
+	 * @return string
+	 */
+	public function getLastedID() {
+		return end($this->data)[0];
+	}
+
 }
