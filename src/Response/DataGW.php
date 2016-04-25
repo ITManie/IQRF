@@ -93,7 +93,7 @@ class DataGW {
 
 	/**
 	 * Get time send data
-	 * @return string Epoch time of send data
+	 * @return string time of send data
 	 * @throws \InvalidArgumentException
 	 */
 	public function getTime() {
