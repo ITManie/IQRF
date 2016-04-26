@@ -8,8 +8,8 @@
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-use IQRF\Cloud\IQRF,
-	Tester\Assert;
+use IQRF\Cloud\IQRF;
+use Tester\Assert;
 
 require __DIR__ . '/bootstrap.php';
 

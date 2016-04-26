@@ -19,10 +19,9 @@
 
 namespace IQRF\Cloud\DI;
 
-use Nette\DI\CompilerExtension,
-	Nette\DI\Compiler,
-	Nette\Configurator,
-	Nette\Utils\Validators;
+use Nette;
+use Nette\Configurator;
+use Nette\Utils\Validators;
 
 /**
  * IQRFExtension
@@ -31,7 +30,7 @@ use Nette\DI\CompilerExtension,
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-class IQRFExtension extends CompilerExtension {
+class IQRFExtension extends Nette\DI\CompilerExtension {
 
 	/**
 	 * @var string Extension name
@@ -70,7 +69,7 @@ class IQRFExtension extends CompilerExtension {
 	 * @param Configurator $config
 	 */
 	public static function register(Configurator $config) {
-		$config->onCompile[] = function (Configurator $configurator, Compiler $compiler) {
+		$config->onCompile[] = function (Configurator $configurator, Nette\DI\Compiler $compiler) {
 			$compiler->addExtension(self::EXTENSION_NAME, new IQRFExtension);
 		};
 	}

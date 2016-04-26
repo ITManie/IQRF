@@ -19,8 +19,7 @@
 
 namespace IQRF\Cloud;
 
-use Nette\Object,
-	Nette\Utils\Validators;
+use Nette\Utils\Validators;
 
 /**
  * IQRF
@@ -29,7 +28,7 @@ use Nette\Object,
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-class IQRF extends Object {
+class IQRF extends \Nette\Object {
 
 	/**
 	 * @var string API URL

@@ -19,8 +19,8 @@
 
 namespace IQRF\Cloud\Response;
 
-use Nette\Utils\Strings,
-	Nette\Utils\Validators;
+use Nette\Utils\Strings;
+use Nette\Utils\Validators;
 
 /**
  * Status

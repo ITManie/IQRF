@@ -19,8 +19,8 @@
 
 namespace IQRF\Cloud;
 
-use IQRF\Cloud\IQRF,
-	GuzzleHttp\Client;
+use IQRF\Cloud\IQRF;
+use GuzzleHttp\Client;
 
 /**
  * Utils
