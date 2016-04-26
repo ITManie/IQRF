@@ -59,39 +59,39 @@ class DataGWTest extends \Tester\TestCase {
 	 * @test
 	 */
 	public function testGetID() {
-		$data = new DataGW($this->response);
+		$response = $this->response;
+		$data = new DataGW($response);
 		Assert::same($data, $data->getID(76));
-		Assert::exception(function() {
-			$response = [['76'], ['67', '2016-03-31 17:43:12', 'DE01FF'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataGW($response);
-			Assert::same($data, $data->getID(100));
-		}, 'OutOfRangeException', 'Non exist ID');
+			$data->getID(100);
+		}, OutOfRangeException::class, 'Non exist ID');
 	}
 
 	/**
 	 * @test
 	 */
 	public function testGetValue() {
-		$data = new DataGW($this->response);
+		$response = $this->response;
+		$data = new DataGW($response);
 		Assert::same('DE01FF', $data->getID(70)->getValue());
-		Assert::exception(function() {
-			$response = [['76'], ['67', '2016-03-31 17:43:12', 'DE01FF'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataGW($response);
-			Assert::same($data, $data->getValue());
-		}, 'InvalidArgumentException', 'ID is empty');
+			$data->getValue();
+		}, InvalidArgumentException::class, 'ID is empty');
 	}
 
 	/**
 	 * @test
 	 */
 	public function testGetTime() {
-		$data = new DataGW($this->response);
+		$response = $this->response;
+		$data = new DataGW($response);
 		Assert::same('2016-03-31 17:43:12', $data->getID(70)->getTime());
-		Assert::exception(function() {
-			$response = [['76'], ['67', '2016-03-31 17:43:12', 'DE01FF'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataGW($response);
-			Assert::same($data, $data->getTime());
-		}, 'InvalidArgumentException', 'ID is empty');
+			$data->getTime();
+		}, InvalidArgumentException::class, 'ID is empty');
 	}
 
 }

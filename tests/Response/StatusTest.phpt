@@ -47,10 +47,9 @@ class StatusTest extends \Tester\TestCase {
 		foreach ($this->array as $code => $message) {
 			Assert::same($code, $status->getCode($code . ';' . $message));
 		}
-		Assert::exception(function() {
-			$status = new Status();
-			Assert::same('ERROR 19', $status->getCode('ERROR 19;Invalid response.'));
-		}, 'InvalidArgumentException', 'Invalid response');
+		Assert::exception(function() use ($status) {
+			$status->getCode('ERROR 19;Invalid response.');
+		}, InvalidArgumentException::class, 'Invalid response');
 	}
 
 	/**
@@ -63,10 +62,9 @@ class StatusTest extends \Tester\TestCase {
 		foreach ($this->array as $code => $message) {
 			Assert::same($message, $status->getMessage($code . ';' . $message));
 		}
-		Assert::exception(function() {
-			$status = new Status();
-			Assert::same('Invalid response.', $status->getMessage('ERROR 19;Invalid response.'));
-		}, 'InvalidArgumentException', 'Invalid response');
+		Assert::exception(function() use ($status) {
+			$status->getMessage('ERROR 19;Invalid response.');
+		}, InvalidArgumentException::class, 'Invalid response');
 	}
 
 }

@@ -60,79 +60,77 @@ class DataAPITest extends \Tester\TestCase {
 	 * @test
 	 */
 	public function testGetID() {
-		$data = new DataAPI($this->response);
+		$response = $this->response;
+		$data = new DataAPI($response);
 		Assert::same($data, $data->getID(8));
-		Assert::exception(function() {
-			$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:39:34', 'confirmed', '2016-03-30 20:39:41'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getID(100));
-		}, 'OutOfRangeException', 'Non exist ID');
+			$data->getID(100);
+		}, OutOfRangeException::class, 'Non exist ID');
 	}
 
 	/**
 	 * @test
 	 */
 	public function testGetValue() {
-		$data = new DataAPI($this->response);
+		$response = $this->response;
+		$data = new DataAPI($response);
 		Assert::same('000200000000FFFF0000', $data->getID(8)->getValue());
-		Assert::exception(function() {
-			$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:39:34', 'confirmed', '2016-03-30 20:39:41'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getValue());
-		}, 'InvalidArgumentException', 'ID is empty');
+			$data->getValue();
+		}, InvalidArgumentException::class, 'ID is empty');
 	}
 
 	/**
 	 * @test
 	 */
 	public function testGetSendTime() {
-		$data = new DataAPI($this->response);
+		$response = $this->response;
+		$data = new DataAPI($response);
 		Assert::same('2016-03-30 20:39:34', $data->getID(8)->getSendTime());
-		Assert::exception(function() {
-			$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:39:34', 'confirmed', '2016-03-30 20:39:41'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getSendTime());
-		}, 'InvalidArgumentException', 'ID is empty');
+			$data->getSendTime();
+		}, InvalidArgumentException::class, 'ID is empty');
 	}
 
 	/**
 	 * @test
 	 */
 	public function testGetStatus() {
-		$data = new DataAPI($this->response);
+		$response = $this->response;
+		$data = new DataAPI($response);
 		Assert::same('confirmed', $data->getID(8)->getStatus());
 		Assert::same('sent', $data->getID(9)->getStatus());
 		Assert::same('expired', $data->getID(10)->getStatus());
 		Assert::same('not­picked', $data->getID(11)->getStatus());
-		Assert::exception(function() {
-			$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:39:34', 'confirmed', '2016-03-30 20:39:41'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getStatus());
-		}, 'InvalidArgumentException', 'ID is empty');
+			$data->getStatus();
+		}, InvalidArgumentException::class, 'ID is empty');
 	}
 
 	/**
 	 * @test
 	 */
 	public function testGetReceiveTime() {
-		$data = new DataAPI($this->response);
+		$response = $this->response;
+		$data = new DataAPI($response);
 		Assert::same('2016-03-30 20:39:41', $data->getID(8)->getReceiveTime());
 		Assert::same('2016-03-30 20:41:11', $data->getID(9)->getReceiveTime());
-		Assert::exception(function() {
-			$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:41:34', 'expired'],];
+		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getID(8)->getReceiveTime());
-		}, 'BadFunctionCallException', 'Data has not yet been received');
-		Assert::exception(function() {
-			$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:42:25', 'not­picked'],];
+			Assert::same($data, $data->getID(10)->getReceiveTime());
+		}, BadFunctionCallException::class, 'Data has not yet been received');
+		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getID(8)->getReceiveTime());
-		}, 'BadFunctionCallException', 'Data has not yet been received');
-		Assert::exception(function() {
-			$response = [['17'], ['8', '000200000000FFFF0000', '2016-03-30 20:39:34', 'confirmed', '2016-03-30 20:39:41'],];
+			Assert::same($data, $data->getID(11)->getReceiveTime());
+		}, BadFunctionCallException::class, 'Data has not yet been received');
+		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
 			Assert::same($data, $data->getReceiveTime());
-		}, 'InvalidArgumentException', 'ID is empty');
+		}, InvalidArgumentException::class, 'ID is empty');
 	}
 
 }
