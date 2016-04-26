@@ -121,15 +121,15 @@ class DataAPITest extends \Tester\TestCase {
 		Assert::same('2016-03-30 20:41:11', $data->getID(9)->getReceiveTime());
 		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getID(10)->getReceiveTime());
+			$data->getID(10)->getReceiveTime();
 		}, BadFunctionCallException::class, 'Data has not yet been received');
 		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getID(11)->getReceiveTime());
+			$data->getID(11)->getReceiveTime();
 		}, BadFunctionCallException::class, 'Data has not yet been received');
 		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
-			Assert::same($data, $data->getReceiveTime());
+			$data->getReceiveTime();
 		}, InvalidArgumentException::class, 'ID is empty');
 	}
 
