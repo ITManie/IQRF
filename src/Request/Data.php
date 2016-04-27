@@ -19,7 +19,7 @@
 
 namespace IQRF\Cloud\Request;
 
-use IQRF\Cloud\Utils;
+use IQRF\Cloud\IQRF;
 
 /**
  * DataAPI
@@ -32,27 +32,29 @@ class Data {
 
 	/**
 	 * Send data to IQRF Cloud
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @param string $gatewayID Gateway ID
+	 * @param string $gwID Gateway ID
 	 * @param mixed $data Data
-	 * @return string $response Response to the request
+	 * @return string Response to the request
 	 */
-	public function send($apiVer, $userName, $gatewayID, $data) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
-				. '&cmd=uplc&data=' . $data;
-		return Utils::createRequest($parameter);
+	public function send($gwID, $data) {
+		$iqrf = new IQRF;
+		$ver = $iqrf->getConfig()->getApiVer();
+		$user = $iqrf->getConfig()->getUserName();
+		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=uplc&data=' . $data;
+		return $iqrf->reateRequest($param);
 	}
 
 	/**
 	 * Get cloud info
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @return string $response Response to the request
+	 * @return string Response to the request
 	 */
-	public function getCloudInfo($apiVer, $userName) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&cmd=info';
-		return Utils::createRequest($parameter);
+	public function getCloudInfo() {
+
+		$iqrf = new IQRF;
+		$ver = $iqrf->getConfig()->getApiVer();
+		$user = $iqrf->getConfig()->getUserName();
+		$param = 'ver=' . $ver . '&uid=' . $user . '&cmd=info';
+		return $iqrf->reateRequest($param);
 	}
 
 }

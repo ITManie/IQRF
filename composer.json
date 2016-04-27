@@ -18,11 +18,13 @@
 		"guzzlehttp/guzzle": "^6.1",
 		"nette/bootstrap": "^2.3",
 		"nette/di": "^2.3",
+		"nette/robot-loader": "^2.3",
 		"nette/utils": "^2.3"
 	},
 	"require-dev": {
 		"nette/tester": "^1.7",
-		"satooshi/php-coveralls": "^1.0"
+		"satooshi/php-coveralls": "^1.0",
+		"mockery/mockery": "^0.9.4"
 	},
 	"support": {
 		"email": "ondracek.roman@centrum.cz",

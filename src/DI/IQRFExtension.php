@@ -40,14 +40,19 @@ class IQRFExtension extends Nette\DI\CompilerExtension {
 	/**
 	 * @var array Default setting
 	 */
-	private $defaults = ['apiKey' => null, 'ipAddr' => '127.0.0.1', 'userName' => 'admin'];
+	private $defaults = ['apiUrl' => 'https://cloud.iqrf.org/api/api.php', 'apiVer' => '2',
+		'apiKey' => null, 'ipAddr' => '127.0.0.1', 'userName' => 'admin'];
 
 	/**
+	 * @param string $apiUrl API URL
+	 * @param string $apiVer API version
 	 * @param string $apiKey API key
 	 * @param string $ipAddr Server IPv4 address
 	 * @param string $userName User name
 	 */
-	public function __construct($apiKey = null, $ipAddr = '127.0.0.1', $userName = 'admin') {
+	public function __construct($apiUrl = 'https://cloud.iqrf.org/api/api.php', $apiVer = '2', $apiKey = null, $ipAddr = '127.0.0.1', $userName = 'admin') {
+		$this->defaults['apiUrl'] = $apiUrl;
+		$this->defaults['apiVer'] = $apiVer;
 		$this->defaults['apiKey'] = $apiKey;
 		$this->defaults['ipAddr'] = $ipAddr;
 		$this->defaults['userName'] = $userName;
@@ -57,12 +62,14 @@ class IQRFExtension extends Nette\DI\CompilerExtension {
 		$config = $this->getConfig($this->defaults);
 		$builder = $this->getContainerBuilder();
 
+		Validators::assert($config['apiUrl'], 'string', 'API URL');
+		Validators::assert($config['apiVer'], 'string', 'API version');
 		Validators::assert($config['apiKey'], 'string', 'API key');
 		Validators::assert($config['ipAddr'], 'string', 'Server IPv4 address');
 		Validators::assert($config['userName'], 'string', 'User name');
 
 		$builder->addDefinition($this->prefix(self::EXTENSION_NAME))
-				->setClass('IQRF\Cloud\IQRF', [$config['apiKey'], $config['ipAddr'], $config['userName']]);
+				->setClass('IQRF\Cloud\Config', [$config['apiUrl'], $config['apiVer'], $config['apiKey'], $config['ipAddr'], $config['userName']]);
 	}
 
 	/**

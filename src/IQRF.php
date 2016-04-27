@@ -19,7 +19,8 @@
 
 namespace IQRF\Cloud;
 
-use Nette\Utils\Validators;
+use GuzzleHttp\Client;
+use Nette\Object;
 
 /**
  * IQRF
@@ -28,70 +29,59 @@ use Nette\Utils\Validators;
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-class IQRF extends \Nette\Object {
+class IQRF extends Object {
 
 	/**
-	 * @var string API URL
+	 * @var Config $config
 	 */
-	const API_URI = 'https://cloud.iqrf.org/api/api.php?';
-
-	/**
-	 * @var string API version
-	 */
-	const API_VER = '2';
-
-	/**
-	 * @var string API key
-	 */
-	private $apiKey;
-
-	/**
-	 * @var string Server IPv4 address
-	 */
-	private $ipAddr;
-
-	/**
-	 * @var string User name
-	 */
-	private $userName;
+	private $config;
+	protected $httpClient;
 
 	/**
 	 * @param string $apiKey API key
 	 * @param string $ipAddr Server IPv4 address
 	 * @param str $userName User name
 	 */
-	public function __construct($apiKey, $ipAddr, $userName) {
-		Validators::assert($apiKey, 'string', 'apiKey');
-		Validators::assert($ipAddr, 'string', 'ipAddr');
-		Validators::assert($userName, 'string', 'userName');
-
-		$this->apiKey = $apiKey;
-		$this->ipAddr = $ipAddr;
-		$this->userName = $userName;
+	public function __construct(Config $config, Client $httpClient) {
+		$this->config = $config;
+		$this->httpClient = $httpClient;
 	}
 
 	/**
-	 * Get API key
-	 * @return string API key
+	 * Get configuration
+	 * @return Config
 	 */
-	public function getApiKey() {
-		return $this->apiKey;
+	public function getConfig() {
+		return $this->config;
 	}
 
 	/**
-	 * Get Server IPv4 address
-	 * @return string Server IPv4 address
+	 * Get HTTP Client
+	 * @return Client
 	 */
-	public function getIpAddr() {
-		return $this->ipAddr;
+	public function getHttpClient() {
+		return $this->httpClient;
 	}
 
 	/**
-	 * Get User name
-	 * @return string User name
+	 * Create md5 hash for IQRF API signature
+	 * @param string $param Parameter of request
+	 * @param int $time Epoch time
+	 * @return string md5 hash
 	 */
-	public function getUserName() {
-		return $this->userName;
+	public function createSignature($param, $time) {
+		return md5($param . '|' . $this->config->getApiKey() . '|' .
+				$this->config->getIpAddr() . '|' . round($time / 600));
+	}
+
+	/**
+	 * Create request
+	 * @param string $param Parameter of request
+	 * @return mixed Response
+	 */
+	public static function createRequest($param) {
+		$param += '&signature=' . $this->createSignature($param, time());
+		return $this->httpClient->request('GET', $this->config->getApiUrl() . '?' . $param);
 	}
 
 }

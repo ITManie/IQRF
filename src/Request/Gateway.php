@@ -19,7 +19,7 @@
 
 namespace IQRF\Cloud\Request;
 
-use IQRF\Cloud\Utils;
+use IQRF\Cloud\IQRF;
 
 /**
  * Gateway
@@ -32,67 +32,68 @@ class Gateway {
 
 	/**
 	 * Add new gateway
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @param string $gatewayID Gateway ID
-	 * @param string $gatewayPW Gateway password
-	 * @return string $response Response to the request
+	 * @param string $gwID Gateway ID
+	 * @param string $gwPW Gateway password
+	 * @return string Response to the request
 	 */
-	public function add($apiVer, $userName, $gatewayID, $gatewayPW) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
-				. '&gpw=' . $gatewayPW . '&cmd=add';
-		return Utils::createRequest($parameter);
+	public function add($gwID, $gwPW) {
+		$iqrf = new IQRF;
+		$ver = $iqrf->getConfig()->getApiVer();
+		$user = $iqrf->getConfig()->getUserName();
+		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&gpw=' . $gwPW . '&cmd=add';
+		return $iqrf->createRequest($param);
 	}
 
 	/**
 	 * Remove gateway
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @param string $gatewayID Gateway ID
-	 * @return string $response Response to the request
+	 * @param string $gwID Gateway ID
+	 * @return string Response to the request
 	 */
-	public function remove($apiVer, $userName, $gatewayID) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
-				. '&cmd=rem';
-		return Utils::createRequest($parameter);
+	public function remove($gwID) {
+		$iqrf = new IQRF;
+		$ver = $iqrf->getConfig()->getApiVer();
+		$user = $iqrf->getConfig()->getUserName();
+		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=rem';
+		return $iqrf->createRequest($param);
 	}
 
 	/**
 	 * Edit gateway
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @param string $gatewayID Gateway ID
-	 * @param string $gatewayAlias Gateway alias
-	 * @return string $response Response to the request
+	 * @param string $gwID Gateway ID
+	 * @param string $gwAlias Gateway alias
+	 * @return string Response to the request
 	 */
-	public function edit($apiVer, $userName, $gatewayID, $gatewayAlias) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
-				. '&cmd=edit&alias=' . $gatewayAlias;
-		return Utils::createRequest($parameter);
+	public function edit($gwID, $gwAlias) {
+		$iqrf = new IQRF;
+		$ver = $iqrf->getConfig()->getApiVer();
+		$user = $iqrf->getConfig()->getUserName();
+		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=edit&alias=' . $gwAlias;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
 	 * Get list of gateways
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @return string $response Response to the request
+	 * @return string Response to the request
 	 */
-	public function getList($apiVer, $userName) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&cmd=list';
-		return Utils::createRequest($parameter);
+	public function getList() {
+		$iqrf = new IQRF;
+		$ver = $iqrf->getConfig()->getApiVer();
+		$user = $iqrf->getConfig()->getUserName();
+		$param = 'ver=' . $ver . '&uid=' . $user . '&cmd=list';
+		return $iqrf->createRequest($param);
 	}
 
 	/**
 	 * Get gateway info
-	 * @param int $apiVer API version
-	 * @param string $userName User name
-	 * @param string $gatewayID Gateway ID
-	 * @return string $response Response to the request
+	 * @param string $gwID Gateway ID
+	 * @return string Response to the request
 	 */
-	public function getInfo($apiVer, $userName, $gatewayID) {
-		$parameter = 'ver=' . $apiVer . '&uid=' . $userName . '&gid=' . $gatewayID
-				. '&cmd=info';
-		return Utils::createRequest($parameter);
+	public function getInfo($gwID) {
+		$iqrf = new IQRF;
+		$ver = $iqrf->getConfig()->getApiVer();
+		$user = $iqrf->getConfig()->getUserName();
+		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=info';
+		return $iqrf->createRequest($param);
 	}
 
 }

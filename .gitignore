@@ -1,6 +1,7 @@
 vendor/
 tests/output/
 tests/*/output/
+tests/tmp/
 nbproject/
 composer.lock
 coverage/
