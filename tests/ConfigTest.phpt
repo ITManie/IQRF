@@ -8,7 +8,7 @@
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-
+use IQRF\Cloud\IQRF;
 use IQRF\Cloud\Config;
 use Tester\Assert;
 
@@ -21,17 +21,28 @@ class ConfigTest extends \Tester\TestCase {
 	 */
 	public function testConstructor() {
 		$apiUrl = 'https://localhost/api';
-		$apiVer = '2';
 		$apiKey = 'k6wuaem3wtaiupmnuc7cziuvaup2fxim';
 		$ipAddr = '127.0.0.1';
 		$userName = 'admin';
-		$config = new Config($apiUrl, $apiVer, $apiKey, $ipAddr, $userName);
+		$config = new Config($apiUrl, $apiKey, $ipAddr, $userName);
 
 		Assert::same($apiUrl, $config->getApiUrl());
-		Assert::same($apiVer, $config->getApiVer());
 		Assert::same($apiKey, $config->getApiKey());
 		Assert::same($ipAddr, $config->getIpAddr());
 		Assert::same($userName, $config->getUserName());
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetApiVer() {
+		$apiUrl = 'https://localhost/api';
+		$apiKey = 'k6wuaem3wtaiupmnuc7cziuvaup2fxim';
+		$ipAddr = '127.0.0.1';
+		$userName = 'admin';
+		$config = new Config($apiUrl, $apiKey, $ipAddr, $userName);
+
+		Assert::same(2, $config->getApiVer());
 	}
 
 }

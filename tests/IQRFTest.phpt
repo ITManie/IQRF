@@ -28,10 +28,13 @@ class IQRFTest extends \Tester\TestCase {
 		Assert::same($httpClient, $iqrf->getHttpClient());
 	}
 
+	/**
+	 * @test
+	 */
 	public function testCreateSignature() {
 		$apiUrl = 'https://localhost/api';
 		$apiKey = '12345678901234567890123456789012';
-		$config = new Config($apiUrl, '2', $apiKey, '127.0.0.1', 'admin');
+		$config = new Config($apiUrl, $apiKey, '127.0.0.1', 'admin');
 		$httpClient = Mockery::mock(Client::class);
 		$iqrf = new IQRF($config, $httpClient);
 		$hash = 'b22aab1b48223e079124c36ac125ed57';

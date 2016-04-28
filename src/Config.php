@@ -38,7 +38,7 @@ class Config {
 	/**
 	 * @var string API Version
 	 */
-	private $apiVer;
+	private $apiVer = 2;
 
 	/**
 	 * @var string API key
@@ -57,20 +57,17 @@ class Config {
 
 	/**
 	 * @param string $apiUrl API url
-	 * @param string $apiVer API version
 	 * @param string $apiKey API key
 	 * @param string $ipAddr Server IPv4 address
 	 * @param string $userName User name
 	 */
-	public function __construct($apiUrl, $apiVer, $apiKey, $ipAddr, $userName) {
+	public function __construct($apiUrl, $apiKey, $ipAddr, $userName) {
 		Validators::assert($apiUrl, 'string', 'apiUrl');
-		Validators::assert($apiVer, 'string', 'apiVer');
 		Validators::assert($apiKey, 'string', 'apiKey');
 		Validators::assert($ipAddr, 'string', 'ipAddr');
 		Validators::assert($userName, 'string', 'userName');
 
 		$this->apiUrl = $apiUrl;
-		$this->apiVer = $apiVer;
 		$this->apiKey = $apiKey;
 		$this->ipAddr = $ipAddr;
 		$this->userName = $userName;
