@@ -24,6 +24,7 @@ class IQRFTest extends \Tester\TestCase {
 		$config = Mockery::mock(Config::class);
 		$httpClient = Mockery::mock(Client::class);
 		$iqrf = new IQRF($config, $httpClient);
+
 		Assert::same($config, $iqrf->getConfig());
 		Assert::same($httpClient, $iqrf->getHttpClient());
 	}

@@ -29,6 +29,7 @@ class DataAPITest extends \Tester\TestCase {
 	 */
 	public function testGetData() {
 		$data = new DataAPI($this->response);
+
 		Assert::same($this->response, $data->getData());
 	}
 
@@ -37,6 +38,7 @@ class DataAPITest extends \Tester\TestCase {
 	 */
 	public function testGetCount() {
 		$data = new DataAPI($this->response);
+
 		Assert::same('17', $data->getCount());
 	}
 
@@ -45,6 +47,7 @@ class DataAPITest extends \Tester\TestCase {
 	 */
 	public function testGetFirstID() {
 		$data = new DataAPI($this->response);
+
 		Assert::same('8', $data->getFirstID());
 	}
 
@@ -53,6 +56,7 @@ class DataAPITest extends \Tester\TestCase {
 	 */
 	public function testGetLastedID() {
 		$data = new DataAPI($this->response);
+
 		Assert::same('11', $data->getLastedID());
 	}
 
@@ -62,6 +66,7 @@ class DataAPITest extends \Tester\TestCase {
 	public function testGetID() {
 		$response = $this->response;
 		$data = new DataAPI($response);
+
 		Assert::same($data, $data->getID(8));
 		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
@@ -75,6 +80,7 @@ class DataAPITest extends \Tester\TestCase {
 	public function testGetValue() {
 		$response = $this->response;
 		$data = new DataAPI($response);
+
 		Assert::same('000200000000FFFF0000', $data->getID(8)->getValue());
 		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
@@ -88,6 +94,7 @@ class DataAPITest extends \Tester\TestCase {
 	public function testGetSendTime() {
 		$response = $this->response;
 		$data = new DataAPI($response);
+
 		Assert::same('2016-03-30 20:39:34', $data->getID(8)->getSendTime());
 		Assert::exception(function() use ($response) {
 			$data = new DataAPI($response);
@@ -101,6 +108,7 @@ class DataAPITest extends \Tester\TestCase {
 	public function testGetStatus() {
 		$response = $this->response;
 		$data = new DataAPI($response);
+
 		Assert::same('confirmed', $data->getID(8)->getStatus());
 		Assert::same('sent', $data->getID(9)->getStatus());
 		Assert::same('expired', $data->getID(10)->getStatus());
@@ -117,6 +125,7 @@ class DataAPITest extends \Tester\TestCase {
 	public function testGetReceiveTime() {
 		$response = $this->response;
 		$data = new DataAPI($response);
+
 		Assert::same('2016-03-30 20:39:41', $data->getID(8)->getReceiveTime());
 		Assert::same('2016-03-30 20:41:11', $data->getID(9)->getReceiveTime());
 		Assert::exception(function() use ($response) {

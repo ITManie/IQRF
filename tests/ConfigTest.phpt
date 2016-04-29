@@ -8,8 +8,8 @@
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-use IQRF\Cloud\IQRF;
 use IQRF\Cloud\Config;
+use Nette\Utils\AssertionException;
 use Tester\Assert;
 
 require __DIR__ . '/bootstrap.php';
@@ -17,30 +17,93 @@ require __DIR__ . '/bootstrap.php';
 class ConfigTest extends \Tester\TestCase {
 
 	/**
+	 * @var string API URL
+	 */
+	private $apiUrl = 'https://localhost/api';
+
+	/**
+	 * @var string API key
+	 */
+	private $apiKey = 'k6wuaem3wtaiupmnuc7cziuvaup2fxim';
+
+	/**
+	 * @var string Server IPv4 address
+	 */
+	private $ip = '127.0.0.1';
+
+	/**
+	 * @var string User name
+	 */
+	private $user = 'admin';
+
+	/**
 	 * @test
 	 */
 	public function testConstructor() {
-		$apiUrl = 'https://localhost/api';
-		$apiKey = 'k6wuaem3wtaiupmnuc7cziuvaup2fxim';
-		$ipAddr = '127.0.0.1';
-		$userName = 'admin';
-		$config = new Config($apiUrl, $apiKey, $ipAddr, $userName);
+		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
 
-		Assert::same($apiUrl, $config->getApiUrl());
-		Assert::same($apiKey, $config->getApiKey());
-		Assert::same($ipAddr, $config->getIpAddr());
-		Assert::same($userName, $config->getUserName());
+		Assert::same($this->apiUrl, $config->getApiUrl());
+		Assert::same($this->apiKey, $config->getApiKey());
+		Assert::same($this->ip, $config->getIpAddr());
+		Assert::same($this->user, $config->getUserName());
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetApiUrl() {
+		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
+
+		Assert::same($this->apiUrl, $config->getApiUrl());
+		Assert::exception(function() {
+			new Config('api', 'apiKey', 'ip', 'user');
+		}, AssertionException::class, 'The apiUrl expects to be url, string \'api\' given.');
+		Assert::exception(function() {
+			new Config(null, 'apiKey', 'ip', 'user');
+		}, AssertionException::class, 'The apiUrl expects to be url, NULL given.');
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetApiKey() {
+		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
+
+		Assert::same($this->apiKey, $config->getApiKey());
+		Assert::exception(function() {
+			new Config('https://localhost/api', null, 'ip', 'user');
+		}, AssertionException::class, 'The apiKey expects to be string, NULL given.');
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetIpAddr() {
+		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
+
+		Assert::same($this->ip, $config->getIpAddr());
+		Assert::exception(function() {
+			new Config('https://localhost/api', 'apiKey', null, 'user');
+		}, AssertionException::class, 'The ipAddr expects to be string, NULL given.');
+	}
+
+	/**
+	 * @test
+	 */
+	public function testGetUserName() {
+		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
+
+		Assert::same($this->user, $config->getUserName());
+		Assert::exception(function() {
+			new Config('https://localhost/api', 'apiKey', 'ip', null);
+		}, AssertionException::class, 'The userName expects to be string, NULL given.');
 	}
 
 	/**
 	 * @test
 	 */
 	public function testGetApiVer() {
-		$apiUrl = 'https://localhost/api';
-		$apiKey = 'k6wuaem3wtaiupmnuc7cziuvaup2fxim';
-		$ipAddr = '127.0.0.1';
-		$userName = 'admin';
-		$config = new Config($apiUrl, $apiKey, $ipAddr, $userName);
+		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
 
 		Assert::same(2, $config->getApiVer());
 	}

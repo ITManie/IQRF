@@ -62,7 +62,7 @@ class Config {
 	 * @param string $userName User name
 	 */
 	public function __construct($apiUrl, $apiKey, $ipAddr, $userName) {
-		Validators::assert($apiUrl, 'string', 'apiUrl');
+		Validators::assert($apiUrl, 'url', 'apiUrl');
 		Validators::assert($apiKey, 'string', 'apiKey');
 		Validators::assert($ipAddr, 'string', 'ipAddr');
 		Validators::assert($userName, 'string', 'userName');

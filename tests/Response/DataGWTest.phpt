@@ -28,6 +28,7 @@ class DataGWTest extends \Tester\TestCase {
 	 */
 	public function testGetData() {
 		$data = new DataGW($this->response);
+
 		Assert::same($this->response, $data->getData());
 	}
 
@@ -36,6 +37,7 @@ class DataGWTest extends \Tester\TestCase {
 	 */
 	public function testGetCount() {
 		$data = new DataGW($this->response);
+
 		Assert::same('76', $data->getCount());
 	}
 
@@ -44,6 +46,7 @@ class DataGWTest extends \Tester\TestCase {
 	 */
 	public function testGetFirstID() {
 		$data = new DataGW($this->response);
+
 		Assert::same('70', $data->getFirstID());
 	}
 
@@ -52,6 +55,7 @@ class DataGWTest extends \Tester\TestCase {
 	 */
 	public function testGetLastedID() {
 		$data = new DataGW($this->response);
+
 		Assert::same('76', $data->getLastedID());
 	}
 
@@ -61,6 +65,7 @@ class DataGWTest extends \Tester\TestCase {
 	public function testGetID() {
 		$response = $this->response;
 		$data = new DataGW($response);
+
 		Assert::same($data, $data->getID(76));
 		Assert::exception(function() use ($response) {
 			$data = new DataGW($response);
@@ -74,6 +79,7 @@ class DataGWTest extends \Tester\TestCase {
 	public function testGetValue() {
 		$response = $this->response;
 		$data = new DataGW($response);
+
 		Assert::same('DE01FF', $data->getID(70)->getValue());
 		Assert::exception(function() use ($response) {
 			$data = new DataGW($response);
@@ -87,6 +93,7 @@ class DataGWTest extends \Tester\TestCase {
 	public function testGetTime() {
 		$response = $this->response;
 		$data = new DataGW($response);
+
 		Assert::same('2016-03-31 17:43:12', $data->getID(70)->getTime());
 		Assert::exception(function() use ($response) {
 			$data = new DataGW($response);
