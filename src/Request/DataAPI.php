@@ -59,7 +59,7 @@ class DataAPI {
 	}
 
 	/**
-	 * Get data from message ID from the Cloud (incoming from the GW)
+	 * Get data from message ID from the Cloud (incoming from the API)
 	 * @param string $gwID Gateway ID
 	 * @param int $messageID From message ID
 	 * @param int $count The number of messages
@@ -90,7 +90,7 @@ class DataAPI {
 	}
 
 	/**
-	 * Get data from and to message IDs from the Cloud (incoming from the GW)
+	 * Get data from and to message IDs from the Cloud (incoming from the API)
 	 * @param string $gwID Gateway ID
 	 * @param int $from From message ID
 	 * @param int $to To message ID
@@ -105,7 +105,7 @@ class DataAPI {
 	}
 
 	/**
-	 * Get data from time of message from the Cloud (incoming from the GW)
+	 * Get data from time of message from the Cloud (incoming from the API)
 	 * @param string $gwID Gateway ID
 	 * @param int $fromTime Time from sending message
 	 * @param int $count The number of messages
@@ -120,7 +120,7 @@ class DataAPI {
 	}
 
 	/**
-	 * Get data to time of message from the Cloud (incoming from the GW)
+	 * Get data to time of message from the Cloud (incoming from the API)
 	 * @param string $gwID Gateway ID
 	 * @param int $toTime Time to sending message
 	 * @param int $count The number of messages
@@ -135,7 +135,7 @@ class DataAPI {
 	}
 
 	/**
-	 * Get data from time of message and to time of message from the Cloud (incoming from the GW)
+	 * Get data from time of message and to time of message from the Cloud (incoming from the API)
 	 * @param string $gwID Gateway ID
 	 * @param int $fromTime Time from sending message
 	 * @param int $toTime Time to sending message
