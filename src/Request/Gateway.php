@@ -37,10 +37,10 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function add($gwID, $gwPW) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&gpw=' . $gwPW . '&cmd=add';
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&gpw=' . $gwPW . '&cmd=add';
 		return $iqrf->createRequest($param);
 	}
 
@@ -50,10 +50,10 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function remove($gwID) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=rem';
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName()
+				. '&gid=' . $gwID . '&cmd=rem';
 		return $iqrf->createRequest($param);
 	}
 
@@ -64,10 +64,10 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function edit($gwID, $gwAlias) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=edit&alias=' . $gwAlias;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=edit&alias=' . $gwAlias;
 		return $iqrf->createRequest($param);
 	}
 
@@ -76,10 +76,9 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function getList() {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&cmd=list';
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() . '&cmd=list';
 		return $iqrf->createRequest($param);
 	}
 
@@ -89,10 +88,10 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function getInfo($gwID) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=info';
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=info';
 		return $iqrf->createRequest($param);
 	}
 

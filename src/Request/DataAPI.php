@@ -37,11 +37,10 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getLast($gwID, $count = 1) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&last=1&count=' . $count;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=dnlc&last=1&count=' . $count;
 		return $iqrf->reateRequest($param);
 	}
 
@@ -52,11 +51,10 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getNew($gwID, $count = 1) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&new=1&count=' . $count;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=dnlc&new=1&count=' . $count;
 		return $iqrf->reateRequest($param);
 	}
 
@@ -68,26 +66,26 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFrom($gwID, $messageID, $count = 1) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&from=' . $messageID . '&count=' . $count;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config()->getApiVer() . '&uid=' .
+				$config()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&from=' . $messageID . '&count=' . $count;
 		return $iqrf->reateRequest($param);
 	}
 
 	/**
+	 * Get data to message ID from the Cloud (incoming from the API)
 	 * @param string $gwID Gateway ID
 	 * @param int $messageID To message ID
 	 * @param int $count The number of messages
 	 * @return string Response to the request
 	 */
 	public function getTo($gwID, $messageID, $count = 1) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&to=' . $messageID . '&count=' . $count;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=dnlc&to=' . $messageID . '&count=' . $count;
 		return $iqrf->reateRequest($param);
 	}
 
@@ -99,11 +97,10 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFromTo($gwID, $from, $to) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&from=' . $from . '&to=' . $to;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=dnlc&from=' . $from . '&to=' . $to;
 		return $iqrf->reateRequest($param);
 	}
 
@@ -115,11 +112,10 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFromTime($gwID, $fromTime, $count = 1) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&from_time=' . $fromTime . '&count=' . $count;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=dnlc&from_time=' . $fromTime . '&count=' . $count;
 		return $iqrf->reateRequest($param);
 	}
 
@@ -131,11 +127,10 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getToTime($gwID, $toTime, $count = 1) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&to_time=' . $toTime . '&count=' . $count;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=dnlc&to_time=' . $toTime . '&count=' . $count;
 		return $iqrf->reateRequest($param);
 	}
 
@@ -147,11 +142,10 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFromTimeToTime($gwID, $fromTime, $toTime) {
-		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID
-				. '&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
+		$iqrf = new IQRF();
+		$config = $iqrf->getConfig();
+		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
+				'&gid=' . $gwID . '&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
 		return $iqrf->reateRequest($param);
 	}
 

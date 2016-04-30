@@ -27,18 +27,18 @@
 use GuzzleHttp\Client;
 
 class MockClient extends Client {
-	
+
 	private $param;
-	
+
 	public function get($param) {
 		$this->param = $param;
 		return $this;
 	}
-	
+
 	public function getBody() {
 		return $this;
 	}
-	
+
 	public function getContents() {
 		return $this->param;
 	}

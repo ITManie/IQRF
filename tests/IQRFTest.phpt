@@ -50,13 +50,16 @@ class IQRFTest extends \Tester\TestCase {
 		Assert::same($hash, $iqrf->createSignature(self::PARAM, $time));
 	}
 
+	/**
+	 * @test
+	 */
 	public function testCreateRequest() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
 		$httpClient = new MockClient();
 		$iqrf = new IQRF($config, $httpClient);
 		$output = self::API_URL . '?' . self::PARAM . '&signature=' .
 				$iqrf->createSignature(self::PARAM, time());
-		
+
 		Assert::same($output, $iqrf->createRequest(self::PARAM));
 	}
 
