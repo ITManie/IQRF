@@ -32,7 +32,7 @@ script:
   # Nette Tester
   - vendor/bin/tester -p $PHP_BIN ./tests -s $COVERAGE
   # Nette Code checker
-  - php temp/code-checker/src/code-checker.php -l --short-arrays
+  - php temp/code-checker/src/code-checker.php -l --short-arrays --ignore docs/*
 after_success:
   - 'if [ "$COVERAGE" != "" ]; then php vendor/bin/coveralls -v; fi;'
 after_failure:
