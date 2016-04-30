@@ -24,7 +24,6 @@ use Nette\Utils\Validators;
 /**
  * Config
  * @author Roman Ondráček <ondracek.roman@centrum.cz>
- * @package IQRF\Cloud
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
