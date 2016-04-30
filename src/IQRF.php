@@ -81,8 +81,7 @@ class IQRF extends Object {
 	 */
 	public static function createRequest($param) {
 		$url = $this->config->getApiUrl() . '?' . $param . '&signature=' . $this->createSignature($param, time());
-		$request = $this->httpClient->get($url);
-		return $request->getBody()->getContents();
+		return $this->httpClient->get($url)->getBody()->getContents();
 	}
 
 }
