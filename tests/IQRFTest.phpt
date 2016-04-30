@@ -14,8 +14,16 @@ use GuzzleHttp\Client;
 use Tester\Assert;
 
 require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/MockClient.php';
 
 class IQRFTest extends \Tester\TestCase {
+
+	const
+			API_URL = 'https://localhost/api',
+			API_KEY = '12345678901234567890123456789012',
+			IP_ADDR = '127.0.0.1',
+			USER = 'admin',
+			PARAM = 'ver=2&uid=admin&gid=0d000001&cmd=uplc&data=616263';
 
 	/**
 	 * @test
@@ -33,16 +41,23 @@ class IQRFTest extends \Tester\TestCase {
 	 * @test
 	 */
 	public function testCreateSignature() {
-		$apiUrl = 'https://localhost/api';
-		$apiKey = '12345678901234567890123456789012';
-		$config = new Config($apiUrl, $apiKey, '127.0.0.1', 'admin');
+		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
 		$httpClient = Mockery::mock(Client::class);
 		$iqrf = new IQRF($config, $httpClient);
 		$hash = 'b22aab1b48223e079124c36ac125ed57';
-		$param = 'ver=2&uid=admin&gid=0d000001&cmd=uplc&data=616263';
 		$time = 1456758380;
 
-		Assert::same($hash, $iqrf->createSignature($param, $time));
+		Assert::same($hash, $iqrf->createSignature(self::PARAM, $time));
+	}
+
+	public function testCreateRequest() {
+		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
+		$httpClient = new MockClient();
+		$iqrf = new IQRF($config, $httpClient);
+		$output = self::API_URL . '?' . self::PARAM . '&signature=' .
+				$iqrf->createSignature(self::PARAM, time());
+		
+		Assert::same($output, $iqrf->createRequest(self::PARAM));
 	}
 
 }

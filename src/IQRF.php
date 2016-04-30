@@ -79,7 +79,7 @@ class IQRF extends Object {
 	 * @param string $param Parameter of request
 	 * @return mixed Response
 	 */
-	public static function createRequest($param) {
+	public function createRequest($param) {
 		$url = $this->config->getApiUrl() . '?' . $param . '&signature=' . $this->createSignature($param, time());
 		return $this->httpClient->get($url)->getBody()->getContents();
 	}
