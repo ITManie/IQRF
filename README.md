@@ -30,7 +30,6 @@ extensions:
 
 iqrf:
 	apiUrl: 'https://cloud.iqrf.org/api/api.php'
-	apiVer: '2'
 	apiKey: 'k6wuaem3wtaiupmnuc7cziuvaup2fxim'
 	ipAddr: '127.0.0.1'
 	userName: 'admin'
