@@ -33,8 +33,14 @@ class IQRF extends Object {
 	/**
 	 * @var Config $config
 	 */
-	private $config;
+	protected $config;
+
+	/**
+	 *
+	 * @var Client Guzzle HTTP client
+	 */
 	protected $httpClient;
+	private static $instance = null;
 
 	/**
 	 * @param string $apiKey API key
@@ -44,6 +50,7 @@ class IQRF extends Object {
 	public function __construct(Config $config, Client $httpClient) {
 		$this->config = $config;
 		$this->httpClient = $httpClient;
+		self::$instance = $this;
 	}
 
 	/**
@@ -60,6 +67,18 @@ class IQRF extends Object {
 	 */
 	public function getHttpClient() {
 		return $this->httpClient;
+	}
+
+	/**
+	 * Get IQRF Class instance
+	 * @return IQRF
+	 */
+	public static function getInstance() {
+		if (self::$instance === null) {
+			self::$instance = new self();
+		} else {
+			return self::$instance;
+		}
 	}
 
 	/**
