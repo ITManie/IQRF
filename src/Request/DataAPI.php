@@ -20,6 +20,7 @@
 namespace IQRF\Cloud\Request;
 
 use IQRF\Cloud\IQRF;
+use Nette\Utils\Validators;
 
 /**
  * DataAPI
@@ -36,11 +37,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getLast($gwID, $count = 1) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
-				'&gid=' . $gwID . '&cmd=dnlc&last=1&count=' . $count;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&last=1&count=' . $count;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -50,11 +51,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getNew($gwID, $count = 1) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
-				'&gid=' . $gwID . '&cmd=dnlc&new=1&count=' . $count;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&new=1&count=' . $count;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -65,12 +66,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFrom($gwID, $messageID, $count = 1) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config()->getApiVer() . '&uid=' .
-				$config()->getUserName() . '&gid=' . $gwID .
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
 				'&cmd=dnlc&from=' . $messageID . '&count=' . $count;
-		return $iqrf->reateRequest($param);
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -81,11 +81,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getTo($gwID, $messageID, $count = 1) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
-				'&gid=' . $gwID . '&cmd=dnlc&to=' . $messageID . '&count=' . $count;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&to=' . $messageID . '&count=' . $count;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -96,11 +96,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFromTo($gwID, $from, $to) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
-				'&gid=' . $gwID . '&cmd=dnlc&from=' . $from . '&to=' . $to;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&from=' . $from . '&to=' . $to;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -111,11 +111,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFromTime($gwID, $fromTime, $count = 1) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
-				'&gid=' . $gwID . '&cmd=dnlc&from_time=' . $fromTime . '&count=' . $count;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&from_time=' . $fromTime . '&count=' . $count;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -126,11 +126,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getToTime($gwID, $toTime, $count = 1) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
-				'&gid=' . $gwID . '&cmd=dnlc&to_time=' . $toTime . '&count=' . $count;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&to_time=' . $toTime . '&count=' . $count;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -141,11 +141,11 @@ class DataAPI {
 	 * @return string Response to the request
 	 */
 	public function getFromTimeToTime($gwID, $fromTime, $toTime) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = new IQRF();
-		$config = $iqrf->getConfig();
-		$param = 'ver=' . $config->getApiVer() . '&uid=' . $config->getUserName() .
-				'&gid=' . $gwID . '&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
+				'&cmd=dnlc&from_time=' . $fromTime . '&to_time=' . $toTime;
+		return $iqrf->createRequest($param);
 	}
 
 }

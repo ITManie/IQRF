@@ -20,6 +20,7 @@
 namespace IQRF\Cloud\Request;
 
 use IQRF\Cloud\IQRF;
+use Nette\Utils\Validators;
 
 /**
  * DataAPI
@@ -27,7 +28,7 @@ use IQRF\Cloud\IQRF;
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0
  */
-class Data {
+class Data extends IQRF {
 
 	/**
 	 * Send data to IQRF Cloud
@@ -36,11 +37,12 @@ class Data {
 	 * @return string Response to the request
 	 */
 	public function send($gwID, $data) {
+		Validators::assert($gwID, 'string', 'gwID');
+		Validators::assert($data, 'string', 'data');
 		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&gid=' . $gwID . '&cmd=uplc&data=' . $data;
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' .
+				$gwID . '&cmd=uplc&data=' . $data;
+		return $iqrf->createRequest($param);
 	}
 
 	/**
@@ -48,12 +50,9 @@ class Data {
 	 * @return string Response to the request
 	 */
 	public function getCloudInfo() {
-
 		$iqrf = new IQRF;
-		$ver = $iqrf->getConfig()->getApiVer();
-		$user = $iqrf->getConfig()->getUserName();
-		$param = 'ver=' . $ver . '&uid=' . $user . '&cmd=info';
-		return $iqrf->reateRequest($param);
+		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&cmd=info';
+		return $iqrf->createRequest($param);
 	}
 
 }
