@@ -20,6 +20,7 @@
 namespace IQRF\Cloud\Request;
 
 use IQRF\Cloud\IQRF;
+use Nette\Utils\Validators;
 
 /**
  * DataAPI
@@ -36,6 +37,8 @@ class Data {
 	 * @return string Response to the request
 	 */
 	public function send($gwID, $data) {
+		Validators::assert($gwID, 'string', 'gwID');
+		Validators::assert($data, 'string', 'data');
 		$iqrf = IQRF::getInstance();
 		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' .
 				$gwID . '&cmd=uplc&data=' . $data;

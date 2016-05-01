@@ -74,11 +74,7 @@ class IQRF extends Object {
 	 * @return IQRF
 	 */
 	public static function getInstance() {
-		if (self::$instance === null) {
-			self::$instance = new self();
-		} else {
-			return self::$instance;
-		}
+		return self::$instance;
 	}
 
 	/**

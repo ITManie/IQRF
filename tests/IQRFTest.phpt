@@ -40,6 +40,17 @@ class IQRFTest extends \Tester\TestCase {
 	/**
 	 * @test
 	 */
+	public function testGetInstance() {
+		$config = Mockery::mock(Config::class);
+		$httpClient = Mockery::mock(Client::class);
+		$iqrf = new IQRF($config, $httpClient);
+
+		Assert::same($iqrf, IQRF::getInstance());
+	}
+
+	/**
+	 * @test
+	 */
 	public function testCreateSignature() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
 		$httpClient = Mockery::mock(Client::class);

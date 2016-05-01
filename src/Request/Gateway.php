@@ -20,6 +20,7 @@
 namespace IQRF\Cloud\Request;
 
 use IQRF\Cloud\IQRF;
+use Nette\Utils\Validators;
 
 /**
  * Gateway
@@ -36,6 +37,8 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function add($gwID, $gwPW) {
+		Validators::assert($gwID, 'string', 'gwID');
+		Validators::assert($gwPW, 'string', 'gwPW');
 		$iqrf = IQRF::getInstance();
 		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
 				'&gpw=' . $gwPW . '&cmd=add';
@@ -48,6 +51,7 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function remove($gwID) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = IQRF::getInstance();
 		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID . '&cmd=rem';
 		return $iqrf->createRequest($param);
@@ -60,6 +64,8 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function edit($gwID, $gwAlias) {
+		Validators::assert($gwID, 'string', 'gwID');
+		Validators::assert($gwAlias, 'string', 'gwAlias');
 		$iqrf = IQRF::getInstance();
 		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID .
 				'&cmd=edit&alias=' . $gwAlias;
@@ -82,6 +88,7 @@ class Gateway {
 	 * @return string Response to the request
 	 */
 	public function getInfo($gwID) {
+		Validators::assert($gwID, 'string', 'gwID');
 		$iqrf = IQRF::getInstance();
 		$param = 'ver=2&uid=' . $iqrf->getConfig()->getUserName() . '&gid=' . $gwID . '&cmd=info';
 		return $iqrf->createRequest($param);

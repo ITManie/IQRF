@@ -11,6 +11,7 @@
 use IQRF\Cloud\Config;
 use IQRF\Cloud\IQRF;
 use IQRF\Cloud\Request\Data;
+use Nette\Utils\AssertionException;
 use Tester\Assert;
 
 require __DIR__ . '/../bootstrap.php';
@@ -37,6 +38,12 @@ class DataTest extends \Tester\TestCase {
 		$output = self::API_URL . '?' . $param . '&signature=' .
 				$iqrf->createSignature($param, time());
 		Assert::same($output, $data->send(self::GW_ID, 'Log'));
+		Assert::exception(function() {
+			(new Data())->send(null, 'Log');
+		}, AssertionException::class, 'The gwID expects to be string, NULL given.');
+		Assert::exception(function() {
+			(new Data())->send('1200FFFF', null);
+		}, AssertionException::class, 'The data expects to be string, NULL given.');
 	}
 
 	/**
