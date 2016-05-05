@@ -45,7 +45,7 @@ class Validators {
 	 * @throws \InvalidArgumentException Invalid GW ID
 	 */
 	public static function isGwId($string) {
-		$key = '/^[A-Fa-f0-9]{8}/';
+		$key = '/^[A-Fa-f0-9]{8}$/';
 		if (!preg_match($key, $string)) {
 			throw new \InvalidArgumentException('Invalid GW ID');
 		}

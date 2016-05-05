@@ -44,6 +44,9 @@ class ValidatorsTest extends \Tester\TestCase {
 			Validators::isGwId('1200');
 		}, \InvalidArgumentException::class, 'Invalid GW ID');
 		Assert::exception(function() {
+			Validators::isGwId('1200ffffffff');
+		}, \InvalidArgumentException::class, 'Invalid GW ID');
+		Assert::exception(function() {
 			Validators::isGwId('1200gggg');
 		}, \InvalidArgumentException::class, 'Invalid GW ID');
 		Assert::exception(function() {
