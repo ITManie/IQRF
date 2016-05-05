@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TEST: IQRF\Cloud\IQRF
+ * TEST: IQRF\Cloud\Validators
  * @phpVersion >= 5.5
  * @testCase
  * @author Roman Ondráček <ondracek.roman@centrum.cz>
