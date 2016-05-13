@@ -43,7 +43,7 @@ More about DI container extensions you can find here: https://doc.nette.org/en/2
 
 
 ## Documentation
-Documentation you can found on [this page](https://roman3349.github.io/iqrf-cloud-nette/).
+Documentation you can found on [this page](https://roman3349.github.io/iqrf-cloud-nette/docs/).
 
 ## License
 iqrf-cloud-nette is licensed under the GPLv3 license:
