@@ -38,6 +38,7 @@ class ConfigTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test constructor of class
 	 */
 	public function testConstructor() {
 		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
@@ -50,6 +51,7 @@ class ConfigTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get API URL
 	 */
 	public function testGetApiUrl() {
 		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
@@ -65,6 +67,7 @@ class ConfigTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get API key
 	 */
 	public function testGetApiKey() {
 		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
@@ -77,6 +80,7 @@ class ConfigTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get IPv4 address of server
 	 */
 	public function testGetIpAddr() {
 		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
@@ -89,6 +93,7 @@ class ConfigTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get user name
 	 */
 	public function testGetUserName() {
 		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);
@@ -101,6 +106,7 @@ class ConfigTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get API version
 	 */
 	public function testGetApiVer() {
 		$config = new Config($this->apiUrl, $this->apiKey, $this->ip, $this->user);

@@ -28,6 +28,7 @@ class GatewayTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to add GW
 	 */
 	public function testAdd() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -47,6 +48,7 @@ class GatewayTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to remove GW
 	 */
 	public function testRemove() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -63,6 +65,7 @@ class GatewayTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to edit GW
 	 */
 	public function testEdit() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -82,6 +85,7 @@ class GatewayTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get list of GW
 	 */
 	public function testGetList() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -95,6 +99,7 @@ class GatewayTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get info about GW
 	 */
 	public function testGetInfo() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);

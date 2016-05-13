@@ -26,6 +26,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data
 	 */
 	public function testGetData() {
 		$data = new DataAPI($this->response);
@@ -35,6 +36,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get count
 	 */
 	public function testGetCount() {
 		$data = new DataAPI($this->response);
@@ -44,6 +46,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get first ID
 	 */
 	public function testGetFirstID() {
 		$data = new DataAPI($this->response);
@@ -53,6 +56,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get last ID
 	 */
 	public function testGetLastedID() {
 		$data = new DataAPI($this->response);
@@ -62,6 +66,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get ID
 	 */
 	public function testGetID() {
 		$response = $this->response;
@@ -76,6 +81,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get Value
 	 */
 	public function testGetValue() {
 		$response = $this->response;
@@ -90,6 +96,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get send time
 	 */
 	public function testGetSendTime() {
 		$response = $this->response;
@@ -104,6 +111,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get status
 	 */
 	public function testGetStatus() {
 		$response = $this->response;
@@ -121,6 +129,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get receive time
 	 */
 	public function testGetReceiveTime() {
 		$response = $this->response;

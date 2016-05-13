@@ -28,6 +28,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get last data
 	 */
 	public function testGetLast() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -49,6 +50,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get new data
 	 */
 	public function testGetNew() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -70,6 +72,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data from ID
 	 */
 	public function testGetFrom() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -94,6 +97,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data to ID
 	 */
 	public function testGetTo() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -118,6 +122,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data from ID and to ID
 	 */
 	public function testGetFromTo() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -141,6 +146,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data from time
 	 */
 	public function testGetFromTime() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -165,6 +171,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data to time
 	 */
 	public function testGetToTime() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -189,6 +196,7 @@ class DataAPITest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data from time and to time
 	 */
 	public function testGetFromTimeToTime() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);

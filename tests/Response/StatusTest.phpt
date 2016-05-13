@@ -39,6 +39,7 @@ class StatusTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get status code
 	 */
 	public function testGetCode() {
 		$status = new Status();
@@ -54,6 +55,7 @@ class StatusTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get status message
 	 */
 	public function testGetMessage() {
 		$status = new Status();

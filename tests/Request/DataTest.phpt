@@ -28,6 +28,7 @@ class DataTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to send data to IQRF Cloud
 	 */
 	public function testSend() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -48,6 +49,7 @@ class DataTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get info about IQRF Cloud
 	 */
 	public function testGetCloudInfo() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);

@@ -25,6 +25,7 @@ class DataGWTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get data
 	 */
 	public function testGetData() {
 		$data = new DataGW($this->response);
@@ -34,6 +35,7 @@ class DataGWTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function ro get count
 	 */
 	public function testGetCount() {
 		$data = new DataGW($this->response);
@@ -43,6 +45,7 @@ class DataGWTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get first ID
 	 */
 	public function testGetFirstID() {
 		$data = new DataGW($this->response);
@@ -52,6 +55,7 @@ class DataGWTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get last ID
 	 */
 	public function testGetLastedID() {
 		$data = new DataGW($this->response);
@@ -61,6 +65,7 @@ class DataGWTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get ID
 	 */
 	public function testGetID() {
 		$response = $this->response;
@@ -75,6 +80,7 @@ class DataGWTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get value
 	 */
 	public function testGetValue() {
 		$response = $this->response;
@@ -89,6 +95,7 @@ class DataGWTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get time
 	 */
 	public function testGetTime() {
 		$response = $this->response;

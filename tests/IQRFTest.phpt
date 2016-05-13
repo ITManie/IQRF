@@ -27,6 +27,7 @@ class IQRFTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test constructor of class
 	 */
 	public function testConstructor() {
 		$config = Mockery::mock(Config::class);
@@ -39,6 +40,7 @@ class IQRFTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to get instance of class
 	 */
 	public function testGetInstance() {
 		$config = Mockery::mock(Config::class);
@@ -50,6 +52,7 @@ class IQRFTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to create signature
 	 */
 	public function testCreateSignature() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
@@ -63,6 +66,7 @@ class IQRFTest extends \Tester\TestCase {
 
 	/**
 	 * @test
+	 * Test function to create request to IQRF Cloud API
 	 */
 	public function testCreateRequest() {
 		$config = new Config(self::API_URL, self::API_KEY, self::IP_ADDR, self::USER);
