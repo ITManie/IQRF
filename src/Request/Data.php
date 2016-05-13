@@ -23,7 +23,7 @@ use IQRF\Cloud\IQRF;
 use Nette\Utils\Validators;
 
 /**
- * DataAPI
+ * Data
  * @author Roman Ondráček <ondracek.roman@centrum.cz>
  * @license https://gnu.org/licenses/gpl.html GPLv3
  * @version 1.0.0

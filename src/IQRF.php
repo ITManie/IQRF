@@ -31,15 +31,18 @@ use Nette\Object;
 class IQRF extends Object {
 
 	/**
-	 * @var Config $config
+	 * @var Config
 	 */
 	protected $config;
 
 	/**
-	 *
 	 * @var Client Guzzle HTTP client
 	 */
 	protected $httpClient;
+
+	/**
+	 * @var IQRF IQRF instance
+	 */
 	private static $instance = null;
 
 	/**
