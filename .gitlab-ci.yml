@@ -2,7 +2,7 @@ pages-docs:
   image: php:5.6
   stage: deploy
   script:
-  - wget http://apigen.org/apigen.phar
+  - curl -O -L "http://apigen.org/apigen.phar"
   - php apigen.phar generate -s src -d public/docs --title iqrf-cloud-nette --charset UTF-8 --php --tree --debug --template-theme bootstrap
   artifacts:
     paths:
