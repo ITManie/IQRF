@@ -58,10 +58,13 @@ code-checker:
     - php temp/code-checker/src/code-checker.php -l --short-arrays
 
 coverage:
-  image: php:7.0
+  image: php:5.6
   stage: deploy
+  before_script:
   script:
-    - php vendor/bin/tester -p php ./tests -s --coverage ./coverage/clover.xml --coverage-src ./src
+    - pecl install xdebug
+    - mkdir -p coverage
+    - php vendor/bin/tester -p php -c ./tests/php.ini ./tests -s --coverage ./coverage/clover.xml --coverage-src ./src
     - php vendor/bin/coveralls -v
 
 pages:
