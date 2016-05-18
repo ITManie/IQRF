@@ -1,11 +1,78 @@
-pages-docs:
+stages:
+  - test
+  - deploy
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install git zip unzip -yqq
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar install
+
+test-php55:
+  image: php:5.5
+  stage: test
+  script:
+    - php vendor/bin/tester -p php ./tests -s
+    - 'for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+
+test-php55-fpm:
+  image: php:5.5-fpm
+  stage: test
+  script:
+    - php vendor/bin/tester -p php ./tests -s
+    - 'for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+
+test-php56:
+  image: php:5.6
+  stage: test
+  script:
+    - php vendor/bin/tester -p php ./tests -s
+    - 'for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+
+test-php56-fpm:
+  image: php:5.6-fpm
+  stage: test
+  script:
+    - php vendor/bin/tester -p php ./tests -s
+    - 'for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+
+test-php70:
+  image: php:7.0
+  stage: test
+  script:
+    - php vendor/bin/tester -p php ./tests -s
+    - 'for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+
+test-php70-fpm:
+  image: php:7.0-fpm
+  stage: test
+  script:
+    - php vendor/bin/tester -p php ./tests -s
+    - 'for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
+
+code-checker:
+  image: php:7.0
+  stage: test
+  script:
+    - php composer.phar create-project nette/code-checker temp/code-checker ~2.6 --no-interaction
+    - php temp/code-checker/src/code-checker.php -l --short-arrays
+
+coverage:
+  image: php:7.0
+  stage: deploy
+  script:
+    - php vendor/bin/tester -p php ./tests -s --coverage ./coverage/clover.xml --coverage-src ./src
+    - php vendor/bin/coveralls -v
+
+pages:
   image: php:5.6
   stage: deploy
   script:
-  - curl -O -L "http://apigen.org/apigen.phar"
-  - php apigen.phar generate -s src -d public/docs --title iqrf-cloud-nette --charset UTF-8 --php --tree --debug --template-theme bootstrap
+    - curl -O -L "http://apigen.org/apigen.phar"
+    - rm -rf /public/docs
+    - php apigen.phar generate -s src -d public/docs --title iqrf-cloud-nette --charset UTF-8 --php --tree --debug --template-theme bootstrap
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - master
+    - master
