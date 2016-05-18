@@ -3,12 +3,12 @@
 	"description": "IQRF Cloud API wrapper for Nette Framework.",
 	"keywords": ["iqrf", "cloud", "api", "nette"],
 	"type": "library",
-	"homepage": "https://github.com/Roman3349/iqrf-cloud-nette",
+	"homepage": "https://gitlab.com/Roman3349/iqrf-cloud-nette",
 	"license": ["GPL-3.0"],
 	"authors": [
 		{
 			"name": "Roman Ondráček",
-			"homepage": "https://github.com/Roman3349",
+			"homepage": "https://romanondracek.info/",
 			"email": "ondracek.roman@centrum.cz",
 			"role": "developer"
 		}
@@ -28,7 +28,7 @@
 	},
 	"support": {
 		"email": "ondracek.roman@centrum.cz",
-		"issues": "https://github.com/Roman3349/iqrf-cloud-nette/issues"
+		"issues": "https://gitlab.com/Roman3349/iqrf-cloud-nette/issues"
 	},
 	"autoload": {
 		"psr-4": {
