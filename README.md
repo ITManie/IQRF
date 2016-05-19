@@ -2,11 +2,11 @@
 
 [![build status](https://gitlab.com/Roman3349/iqrf-cloud-nette/badges/master/build.svg)](https://gitlab.com/Roman3349/iqrf-cloud-nette/commits/master)
 [![Packagist](https://img.shields.io/packagist/dt/roman3349/iqrf-cloud-nette.svg)](https://packagist.org/packages/roman3349/iqrf-cloud-nette)
-[![Coveralls](https://img.shields.io/coveralls/Roman3349/iqrf-cloud-nette.svg?style=flat-square)](https://coveralls.io/github/Roman3349/iqrf-cloud-nette?branch=master)
-[![HHVM](https://img.shields.io/hhvm/roman3349/iqrf-cloud-nette.svg?style=flat-square)](http://hhvm.h4cc.de/package/roman3349/iqrf-cloud-nette)
-[![Dependency Status](https://www.versioneye.com/user/projects/571f4d41fcd19a0039f180d1/badge.svg?style=flat)](https://www.versioneye.com/user/projects/571f4d41fcd19a0039f180d1)
-[![Gitter](https://img.shields.io/gitter/room/Roman3349/iqrf-cloud-nette.svg?style=flat-square)](https://gitter.im/Roman3349/iqrf-cloud-nette)
-[![GPLv3](http://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square)](LICENSE)
+[![Coveralls](https://img.shields.io/coveralls/Roman3349/iqrf-cloud-nette.svg-square)](https://coveralls.io/github/Roman3349/iqrf-cloud-nette?branch=master)
+[![HHVM](https://img.shields.io/hhvm/roman3349/iqrf-cloud-nette.svg-square)](http://hhvm.h4cc.de/package/roman3349/iqrf-cloud-nette)
+[![Dependency Status](https://www.versioneye.com/user/projects/571f4d41fcd19a0039f180d1/badge.svg)](https://www.versioneye.com/user/projects/571f4d41fcd19a0039f180d1)
+[![Gitter](https://img.shields.io/gitter/room/Roman3349/iqrf-cloud-nette.svg-square)](https://gitter.im/Roman3349/iqrf-cloud-nette)
+[![GPLv3](http://img.shields.io/badge/license-GPLv3-blue.svg-square)](LICENSE)
 
 IQRF Cloud API wrapper for Nette Framework
 
@@ -40,7 +40,6 @@ php:
 ```
 
 More about DI container extensions you can find here: https://doc.nette.org/en/2.3/di-extensions
-
 
 ## Documentation
 Documentation you can found on [this page](https://roman3349.gitlab.io/iqrf-cloud-nette/docs/).
