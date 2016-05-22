@@ -40,11 +40,5 @@
 	},
 	"archive": {
 		"exclude": ["vendor", "tests", ".travis.yml"]
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url":  "git@gitlab.com:Roman3349/iqrf-cloud-nette.git"
-		}
-	]
+	}
 }
