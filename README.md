@@ -2,11 +2,11 @@
 
 [![build status](https://gitlab.com/Roman3349/iqrf-cloud-nette/badges/master/build.svg)](https://gitlab.com/Roman3349/iqrf-cloud-nette/commits/master)
 [![Packagist](https://img.shields.io/packagist/dt/roman3349/iqrf-cloud-nette.svg)](https://packagist.org/packages/roman3349/iqrf-cloud-nette)
-[![Coveralls](https://img.shields.io/coveralls/Roman3349/iqrf-cloud-nette.svg-square)](https://coveralls.io/github/Roman3349/iqrf-cloud-nette?branch=master)
-[![HHVM](https://img.shields.io/hhvm/roman3349/iqrf-cloud-nette.svg-square)](http://hhvm.h4cc.de/package/roman3349/iqrf-cloud-nette)
+[![Coveralls](https://img.shields.io/coveralls/Roman3349/iqrf-cloud-nette.svg)](https://coveralls.io/github/Roman3349/iqrf-cloud-nette?branch=master)
+[![HHVM](https://img.shields.io/hhvm/roman3349/iqrf-cloud-nette.svg)](http://hhvm.h4cc.de/package/roman3349/iqrf-cloud-nette)
 [![Dependency Status](https://www.versioneye.com/user/projects/571f4d41fcd19a0039f180d1/badge.svg)](https://www.versioneye.com/user/projects/571f4d41fcd19a0039f180d1)
-[![Gitter](https://img.shields.io/gitter/room/Roman3349/iqrf-cloud-nette.svg-square)](https://gitter.im/Roman3349/iqrf-cloud-nette)
-[![GPLv3](http://img.shields.io/badge/license-GPLv3-blue.svg-square)](LICENSE)
+[![Gitter](https://img.shields.io/gitter/room/Roman3349/iqrf-cloud-nette.svg)](https://gitter.im/Roman3349/iqrf-cloud-nette)
+[![GPLv3](http://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 
 IQRF Cloud API wrapper for Nette Framework
 
